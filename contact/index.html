@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>문의하기 — 오디아이 주식회사</title>
+  <meta name="description" content="오디아이 ODI에 OEM/ODM 제조 협력, 양산 문의, 견적 요청을 보내주세요. 경기도 화성시 양감면 소재.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&family=Noto+Serif+KR:wght@600;700&family=Barlow:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/variables.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/pages.css">
+</head>
+<body>
+<div id="site-header" data-base="../"></div>
+
+<section class="page-hero">
+  <div class="container">
+    <nav class="breadcrumb"><a href="../index.html">홈</a><span>/</span><span style="color:rgba(255,255,255,.6)">문의하기</span></nav>
+    <p class="page-hero__label">Contact</p>
+    <h1 class="page-hero__title">문의하기</h1>
+    <p class="page-hero__sub">OEM/ODM 협력, 양산 문의, 견적 요청 — 어떤 내용이든 편하게 연락주십시오.</p>
+  </div>
+</section>
+
+<section class="section section--surface">
+  <div class="container">
+    <p class="section-label fade-up" style="justify-content:center;margin-bottom:1rem">문의 유형</p>
+    <h2 class="section-title fade-up delay-1" style="text-align:center;margin-bottom:.8rem">어떤 도움이 필요하신가요?</h2>
+    <p style="text-align:center;color:var(--color-text-sub);margin-bottom:2rem" class="fade-up delay-2">아래 항목 중 해당하는 내용을 선택하세요.</p>
+    <div class="inquiry-types fade-up delay-1">
+      <div class="inq-card"><div class="inq-icon">🏭</div><div class="inq-title">OEM/ODM 제조 협력</div><div class="inq-sub">장비 양산, 부품 공급</div></div>
+      <div class="inq-card"><div class="inq-icon">💡</div><div class="inq-title">신규 장비 개발</div><div class="inq-sub">설계·제작 문의</div></div>
+      <div class="inq-card"><div class="inq-icon">📋</div><div class="inq-title">견적 요청</div><div class="inq-sub">수량·납기·비용 상담</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="contact-layout">
+      <div class="contact-info-panel fade-up">
+        <h3 style="font-family:var(--font-serif);font-size:1.3rem;font-weight:700;color:#fff;margin-bottom:2rem">연락처 정보</h3>
+        <div class="cip-block">
+          <p class="cip-label">Company</p>
+          <p class="cip-val">오디아이 주식회사<br>ODI Co., Ltd.</p>
+        </div>
+        <div class="cip-block">
+          <p class="cip-label">제1공장 (본사)</p>
+          <p class="cip-val">경기도 화성시 양감면<br>정문송산로 93번길 10-75</p>
+        </div>
+        <div class="cip-block">
+          <p class="cip-label">제2공장</p>
+          <p class="cip-val">경기도 화성시 양감면<br>댕이안길 42-12</p>
+        </div>
+        <div class="cip-block">
+          <p class="cip-label">Tel.</p>
+          <p class="cip-val">[전화번호 입력]</p>
+        </div>
+        <div class="cip-block">
+          <p class="cip-label">Email.</p>
+          <p class="cip-val">[이메일 주소 입력]</p>
+        </div>
+        <div class="cip-block">
+          <p class="cip-label">Business Hours</p>
+          <p class="cip-val">평일 09:00 ~ 18:00<br>(주말·공휴일 휴무)</p>
+        </div>
+        <div class="cip-block">
+          <p class="cip-label">주요 사업</p>
+          <p class="cip-val">반도체·디스플레이 장비<br>자동화·초음파 모듈<br>자동차 부품 검사 장비</p>
+        </div>
+        <div style="margin-top:2rem">
+          <a href="../company/location.html" style="display:block;text-align:center;padding:.8rem;border:1px solid rgba(255,255,255,.2);border-radius:var(--radius-sm);color:rgba(255,255,255,.7);font-size:.875rem;transition:var(--transition)" onmouseover="this.style.borderColor='rgba(26,111,212,.5)'" onmouseout="this.style.borderColor='rgba(255,255,255,.2)'">
+            오시는 길 안내 →
+          </a>
+        </div>
+      </div>
+
+      <div class="contact-form fade-up delay-2">
+        <h3 style="font-family:var(--font-serif);font-size:1.3rem;font-weight:700;color:var(--color-text);margin-bottom:2rem">문의 내용 작성</h3>
+        <form id="contactForm" onsubmit="handleSubmit(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="name">담당자명 <span class="req">*</span></label>
+              <input type="text" id="name" class="form-input" placeholder="홍길동" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="company">회사명 <span class="req">*</span></label>
+              <input type="text" id="company" class="form-input" placeholder="주식회사 예시" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="email">이메일 <span class="req">*</span></label>
+              <input type="email" id="email" class="form-input" placeholder="example@company.com" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="phone">연락처</label>
+              <input type="tel" id="phone" class="form-input" placeholder="010-0000-0000">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="inquiryType">문의 유형 <span class="req">*</span></label>
+            <select id="inquiryType" class="form-select" required>
+              <option value="">선택하세요</option>
+              <option value="oem_odm">OEM/ODM 제조 협력</option>
+              <option value="new_dev">신규 장비 개발</option>
+              <option value="quote">견적 요청</option>
+              <option value="semiconductor">반도체·디스플레이 장비 문의</option>
+              <option value="automation">자동화·초음파 장비 문의</option>
+              <option value="automotive">자동차 부품 검사 장비 문의</option>
+              <option value="other">기타 문의</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="subject">제목 <span class="req">*</span></label>
+            <input type="text" id="subject" class="form-input" placeholder="문의 제목을 입력하세요" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="message">문의 내용 <span class="req">*</span></label>
+            <textarea id="message" class="form-textarea" placeholder="장비 사양, 수량, 납기 등 세부 사항을 자유롭게 작성해주세요." required></textarea>
+          </div>
+          <div class="form-check">
+            <input type="checkbox" id="privacy" required>
+            <label for="privacy">개인정보 수집 및 이용에 동의합니다. 수집된 정보는 문의 응대 목적으로만 사용됩니다.</label>
+          </div>
+          <button type="submit" class="form-submit">문의 보내기</button>
+          <p class="form-note">※ 문의 접수 후 1~2 영업일 내에 담당자가 이메일 또는 전화로 연락드립니다.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="site-footer" data-base="../"></div>
+<script src="../assets/js/main.js"></script>
+<script>
+function handleSubmit(e) {
+  e.preventDefault();
+  const btn = document.querySelector('.form-submit');
+  btn.textContent = '✓ 문의가 접수되었습니다';
+  btn.style.background = '#27ae60';
+  btn.disabled = true;
+  setTimeout(() => {
+    btn.textContent = '문의 보내기';
+    btn.style.background = '';
+    btn.disabled = false;
+    document.getElementById('contactForm').reset();
+  }, 4000);
+}
+</script>
+</body>
+</html>
