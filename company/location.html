@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>오시는 길 — 오디아이 주식회사</title>
+  <meta name="description" content="오디아이 제1공장(500평), 제2공장(100평) 위치 안내. 경기도 화성시 양감면 정문송산로 93번길 10-75. Tel. 031-8059-8845">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&family=Noto+Serif+KR:wght@600;700&family=Barlow:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/variables.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/pages.css">
+  <style>
+    .map-embed {
+      position: relative;
+      width: 100%;
+      min-height: 420px;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+      background: #f3f6fb;
+    }
+    .map-embed iframe {
+      display: block;
+      width: 100%;
+      height: 420px;
+      border: 0;
+    }
+    @media (max-width: 768px) {
+      .map-embed { min-height: 320px; border-radius: 18px; }
+      .map-embed iframe { height: 320px; }
+    }
+    .loc-contact-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+    }
+    @media (max-width: 768px) {
+      .loc-contact-row { grid-template-columns: 1fr; gap: 1rem; }
+    }
+    .loc-contact-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+    .loc-contact-card .lcc-icon {
+      width: 40px;
+      height: 40px;
+      flex-shrink: 0;
+      background: rgba(26,111,212,.08);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-accent);
+    }
+    .loc-contact-card .lcc-label {
+      font-size: .72rem;
+      font-family: var(--font-en);
+      font-weight: 600;
+      letter-spacing: .06em;
+      color: var(--color-accent);
+      margin-bottom: .3rem;
+    }
+    .loc-contact-card .lcc-val {
+      font-size: .93rem;
+      font-weight: 600;
+      color: var(--color-text);
+      line-height: 1.5;
+    }
+    .loc-contact-card a { color: var(--color-text); text-decoration: none; }
+    .loc-contact-card a:hover { color: var(--color-accent); }
+    .visit-notice {
+      margin-top: 2rem;
+      padding: 1.25rem 1.5rem;
+      background: rgba(26,111,212,.05);
+      border: 1px solid rgba(26,111,212,.15);
+      border-radius: var(--radius-sm);
+      border-left: 3px solid var(--color-accent);
+    }
+    .visit-notice p {
+      font-size: .88rem;
+      color: var(--color-text-sub);
+      line-height: 1.75;
+      margin: 0;
+    }
+    .visit-notice strong { color: var(--color-text); }
+    .map-nav-btns {
+      display: flex;
+      gap: .75rem;
+      flex-wrap: wrap;
+      margin-top: 1.25rem;
+    }
+  </style>
+</head>
+<body>
+<div id="site-header" data-base="../"></div>
+
+<section class="page-hero">
+  <div class="container">
+    <nav class="breadcrumb"><a href="../index.html">홈</a><span>/</span><a href="index.html">회사소개</a><span>/</span><span style="color:rgba(255,255,255,.6)">오시는 길</span></nav>
+    <p class="page-hero__label">Location</p>
+    <h1 class="page-hero__title">오시는 길</h1>
+    <p class="page-hero__sub">경기도 화성시 양감면에 위치한 제1·2공장 방문 안내입니다. 방문 전 연락 주시면 상담 가능 시간과 공장 안내를 미리 조율해 드립니다.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <p class="section-label fade-up">Factory Locations</p>
+    <h2 class="section-title fade-up delay-1">공장 위치 안내</h2>
+
+    <div class="location-grid">
+      <div class="loc-card fade-up delay-1">
+        <div class="loc-card__head">
+          <div class="loc-badge">Factory 1</div>
+          <div class="loc-title">제1공장 (본사)</div>
+          <div class="loc-size">500평 — 주력 생산 거점</div>
+        </div>
+        <div class="loc-card__body">
+          <div class="loc-info-row"><span class="loc-info-label">주소</span><span class="loc-info-val">경기도 화성시 양감면<br>정문송산로 93번길 10-75</span></div>
+          <div class="loc-info-row"><span class="loc-info-label">용도</span><span class="loc-info-val">주력 장비 생산, 양산, 조립, 검수, 출하</span></div>
+          <div class="loc-info-row"><span class="loc-info-label">규모</span><span class="loc-info-val">500평 — 항온항습 물류 창고 포함</span></div>
+          <div class="loc-info-row"><span class="loc-info-label">교통</span><span class="loc-info-val">차량 이용 권장 (주차 가능)</span></div>
+        </div>
+      </div>
+
+      <div class="loc-card fade-up delay-2">
+        <div class="loc-card__head">
+          <div class="loc-badge" style="background:rgba(255,255,255,.15)">Factory 2</div>
+          <div class="loc-title">제2공장</div>
+          <div class="loc-size">100평 — 고객사 전용 조립동</div>
+        </div>
+        <div class="loc-card__body">
+          <div class="loc-info-row"><span class="loc-info-label">주소</span><span class="loc-info-val">경기도 화성시 양감면<br>댕이안길 42-12</span></div>
+          <div class="loc-info-row"><span class="loc-info-label">용도</span><span class="loc-info-val">고객사 전용 조립 1동·2동 운영</span></div>
+          <div class="loc-info-row"><span class="loc-info-label">규모</span><span class="loc-info-val">100평 (조립 전용 구획)</span></div>
+          <div class="loc-info-row"><span class="loc-info-label">교통</span><span class="loc-info-val">차량 이용 권장 (주차 가능)</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 제1공장 구글 지도 임베드 -->
+    <div class="fade-up" style="margin-top:3rem;margin-bottom:1rem">
+      <h3 style="font-family:var(--font-serif);font-size:1.1rem;font-weight:700;margin-bottom:1rem;color:var(--color-text)">제1공장 위치</h3>
+      <div class="map-embed">
+        <iframe
+          src="https://www.google.com/maps?q=%EA%B2%BD%EA%B8%B0%EB%8F%84+%ED%99%94%EC%84%B1%EC%8B%9C+%EC%96%91%EA%B0%90%EB%A9%B4+%EC%A0%95%EB%AC%B8%EC%86%A1%EC%82%B0%EB%A1%9C+93%EB%B2%88%EA%B8%B8+10-75&z=16&output=embed"
+          width="100%"
+          height="420"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="ODI 제1공장 오시는 길 구글 지도">
+        </iframe>
+      </div>
+      <div class="map-nav-btns">
+        <a href="https://map.naver.com/v5/search/%EA%B2%BD%EA%B8%B0%EB%8F%84%20%ED%99%94%EC%84%B1%EC%8B%9C%20%EC%96%91%EA%B0%90%EB%A9%B4%20%EC%A0%95%EB%AC%B8%EC%86%A1%EC%82%B0%EB%A1%9C%2093%EB%B2%88%EA%B8%B8%2010-75" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:.4rem;padding:.55rem 1.1rem;background:#03C75A;color:#fff;border-radius:6px;font-size:.83rem;font-weight:600;text-decoration:none">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          네이버 지도로 보기
+        </a>
+        <a href="https://map.kakao.com/link/search/경기도 화성시 양감면 정문송산로 93번길 10-75" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:.4rem;padding:.55rem 1.1rem;background:#FEE500;color:#3C1E1E;border-radius:6px;font-size:.83rem;font-weight:600;text-decoration:none">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          카카오맵으로 보기
+        </a>
+      </div>
+    </div>
+
+    <!-- 제2공장 구글 지도 임베드 -->
+    <div class="fade-up delay-1" style="margin-top:2.5rem;margin-bottom:3rem">
+      <h3 style="font-family:var(--font-serif);font-size:1.1rem;font-weight:700;margin-bottom:1rem;color:var(--color-text)">제2공장 위치</h3>
+      <div class="map-embed">
+        <iframe
+          src="https://www.google.com/maps?q=%EA%B2%BD%EA%B8%B0%EB%8F%84+%ED%99%94%EC%84%B1%EC%8B%9C+%EC%96%91%EA%B0%90%EB%A9%B4+%EB%8C%95%EC%9D%B4%EC%95%88%EA%B8%B8+42-12&z=16&output=embed"
+          width="100%"
+          height="420"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="ODI 제2공장 오시는 길 구글 지도">
+        </iframe>
+      </div>
+      <div class="map-nav-btns">
+        <a href="https://map.naver.com/v5/search/%EA%B2%BD%EA%B8%B0%EB%8F%84%20%ED%99%94%EC%84%B1%EC%8B%9C%20%EC%96%91%EA%B0%90%EB%A9%B4%20%EB%8C%99%EC%9D%B4%EC%95%88%EA%B8%B8%2042-12" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:.4rem;padding:.55rem 1.1rem;background:#03C75A;color:#fff;border-radius:6px;font-size:.83rem;font-weight:600;text-decoration:none">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          네이버 지도로 보기
+        </a>
+        <a href="https://map.kakao.com/link/search/경기도 화성시 양감면 댕이안길 42-12" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:.4rem;padding:.55rem 1.1rem;background:#FEE500;color:#3C1E1E;border-radius:6px;font-size:.83rem;font-weight:600;text-decoration:none">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          카카오맵으로 보기
+        </a>
+      </div>
+    </div>
+
+    <!-- 연락처 카드 -->
+    <p class="section-label fade-up">Contact</p>
+    <h2 class="section-title fade-up delay-1" style="margin-bottom:.5rem">연락처 및 방문 안내</h2>
+
+    <div class="loc-contact-row fade-up delay-1">
+      <div class="loc-contact-card">
+        <div class="lcc-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.61 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        </div>
+        <div>
+          <div class="lcc-label">Phone</div>
+          <div class="lcc-val"><a href="tel:031-8059-8845">031-8059-8845</a></div>
+        </div>
+      </div>
+      <div class="loc-contact-card">
+        <div class="lcc-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <div>
+          <div class="lcc-label">Email</div>
+          <div class="lcc-val"><a href="mailto:silva79@naver.com">silva79@naver.com</a></div>
+        </div>
+      </div>
+      <div class="loc-contact-card">
+        <div class="lcc-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div>
+          <div class="lcc-label">Business Hours</div>
+          <div class="lcc-val">평일 09:00 ~ 18:00<br><span style="font-size:.8rem;font-weight:400;color:var(--color-text-sub)">(주말·공휴일 휴무)</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="visit-notice fade-up delay-2">
+      <p><strong>방문 전 연락 주시면</strong> 상담 가능 시간과 공장 안내를 미리 조율해 드립니다. 도면, 사양서, 희망 일정, 필요한 수량이 있다면 함께 전달해 주세요. 보다 빠르고 정확한 검토가 가능합니다.</p>
+    </div>
+
+    <div style="text-align:center;margin-top:2.5rem" class="fade-up">
+      <a href="../contact/index.html" class="btn btn--primary">방문 상담 문의하기</a>
+    </div>
+  </div>
+</section>
+
+<div id="site-footer" data-base="../"></div>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

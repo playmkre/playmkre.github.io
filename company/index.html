@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>회사소개 — 오디아이 주식회사</title>
+  <meta name="description" content="오디아이(ODI) 기업 개요, 성장 연혁, 비전 및 조직 구조. 2020년 SM 설립부터 2024년 ODI 법인 전환까지.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&family=Noto+Serif+KR:wght@600;700&family=Barlow:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/variables.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/pages.css">
+  <style>
+    /* 비전 로드맵 */
+    .vision-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;margin:3rem 0}
+    .vision-grid::before{content:"";position:absolute;top:32px;left:0;right:0;height:2px;background:linear-gradient(to right,var(--color-accent),rgba(26,111,212,.08))}
+    .vision-phase{padding:0 1rem;text-align:center}
+    .vision-dot{width:20px;height:20px;border-radius:50%;background:var(--color-accent);border:3px solid var(--color-primary);box-shadow:0 0 0 2px rgba(26,111,212,.4);margin:0 auto 1.4rem;position:relative;z-index:1}
+    .vision-num{font-family:var(--font-en);font-size:.65rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--color-accent);margin-bottom:.45rem}
+    .vision-title{font-family:var(--font-serif);font-size:.97rem;font-weight:700;color:#fff;margin-bottom:.6rem;line-height:1.35}
+    .vision-desc{font-size:.8rem;color:rgba(255,255,255,.45);line-height:1.7}
+    /* 비전 목표 */
+    .vision-goals{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin:3rem 0}
+    .vg-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:var(--radius-md);padding:1.6rem;transition:var(--transition)}
+    .vg-card:hover{background:rgba(255,255,255,.07);border-color:rgba(26,111,212,.3)}
+    .vg-icon{font-size:1.8rem;margin-bottom:.75rem}
+    .vg-title{font-family:var(--font-serif);font-size:.95rem;font-weight:700;color:#fff;margin-bottom:.45rem}
+    .vg-desc{font-size:.82rem;color:rgba(255,255,255,.45);line-height:1.75}
+    /* 조직도 */
+    .org-wrap{position:relative;width:100%}
+    .org-ceo-row{display:flex;justify-content:center;margin-bottom:0}
+    .org-ceo{background:var(--color-primary);border:2px solid var(--color-accent);border-radius:var(--radius-md);padding:1rem 2.8rem;text-align:center;display:inline-block;position:relative;z-index:2}
+    .org-ceo-label{font-family:var(--font-en);font-size:.65rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--color-accent);margin-bottom:.3rem}
+    .org-ceo-name{font-family:var(--font-serif);font-size:1.05rem;font-weight:700;color:#fff}
+    /* SVG 연결선 영역 */
+    .org-connector{display:block;width:100%;overflow:visible;flex-shrink:0}
+    /* 팀 카드 그리드 */
+    .org-teams{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;width:100%}
+    .org-team-card{background:#fff;border:1px solid var(--color-border);border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow-sm);transition:var(--transition)}
+    .org-team-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md);border-color:rgba(26,111,212,.25)}
+    .org-team-head{padding:.85rem 1.2rem;border-bottom:1px solid var(--color-border);background:var(--color-surface)}
+    .org-team-en{font-family:var(--font-en);font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--color-accent);margin-bottom:.2rem}
+    .org-team-ko{font-family:var(--font-serif);font-size:.97rem;font-weight:700;color:var(--color-text)}
+    .org-team-body{padding:.85rem 1.2rem}
+    .org-item{font-size:.8rem;color:var(--color-text-sub);padding:.32rem 0 .32rem .9rem;position:relative;line-height:1.55;border-bottom:1px solid var(--color-border)}
+    .org-item:last-child{border-bottom:none}
+    .org-item::before{content:"";position:absolute;left:0;top:.62rem;width:4px;height:4px;border-radius:50%;background:var(--color-accent);opacity:.7}
+    @media(max-width:900px){
+      .vision-grid{grid-template-columns:repeat(2,1fr);gap:2.5rem}.vision-grid::before{display:none}
+      .vision-goals{grid-template-columns:1fr 1fr}
+      .org-connector{display:none}
+      .org-teams{grid-template-columns:repeat(2,1fr);margin-top:2rem}
+    }
+    @media(max-width:600px){
+      .vision-grid{grid-template-columns:1fr}.vision-goals{grid-template-columns:1fr}
+      .org-teams{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+<div id="site-header" data-base="../"></div>
+
+<section class="page-hero">
+  <div class="container">
+    <nav class="breadcrumb"><a href="../index.html">홈</a><span>/</span><span style="color:rgba(255,255,255,.6)">회사소개</span></nav>
+    <p class="page-hero__label">Company</p>
+    <h1 class="page-hero__title">회사소개</h1>
+    <p class="page-hero__sub">오디아이의 기업 개요, 성장 연혁, 비전과 조직 구조를 소개합니다.</p>
+  </div>
+</section>
+
+<!-- 기업개요 -->
+<section class="section">
+  <div class="container">
+    <div class="overview-grid">
+      <div class="fade-up">
+        <div class="overview-visual"><div class="ov-label"><div class="big">ODI</div><div class="small">Est. 2020 · Hwaseong, Korea</div></div></div>
+      </div>
+      <div class="fade-up delay-2">
+        <p class="section-label">Corporate Overview</p>
+        <h2 class="section-title">고객의 장비를<br>우리 것처럼 만듭니다.</h2>
+        <p style="color:var(--color-text-sub);font-size:.875rem;line-height:1.9;margin-bottom:1.8rem">2020년 SM 설립을 시작으로, 반도체·디스플레이·자동차 분야 핵심 제조 파트너로 성장해온 오디아이는 단순 조립을 넘어선 Turnkey 제조와 안정적인 양산 대응 역량을 제공합니다. 2024년 11월 ODI 법인으로 전환하며 생산 인프라를 확장, 제2공장을 고객사 전용 조립동으로 운영하고 있습니다.</p>
+        <table class="profile-table">
+          <tr><th>회사명</th><td>오디아이 주식회사 (ODI Co., Ltd.)</td></tr>
+          <tr><th>설립</th><td>2020년 10월 (SM 설립) / 2024년 11월 법인 전환</td></tr>
+          <tr><th>소재지</th><td>경기도 화성시 양감면 (제1·2공장)</td></tr>
+          <tr><th>사업영역</th><td>반도체·디스플레이·자동차 장비 OEM/ODM</td></tr>
+          <tr><th>생산규모</th><td>제1공장 500평 / 제2공장 100평</td></tr>
+          <tr><th>주요고객</th><td>SEMICS, JEUS, 하이비젼, PSYLOGIC, 듀라소닉, 아우라, JET</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 핵심 인프라 -->
+<section class="section section--dark">
+  <div class="container">
+    <p class="section-label fade-up">Core Infrastructure</p>
+    <h2 class="section-title fade-up delay-1">핵심 인프라</h2>
+    <p class="section-sub fade-up delay-2" style="margin-bottom:3rem">경기도 화성시에 위치한 안정적인 생산 거점</p>
+    <div class="infra-grid">
+      <div class="infra-card fade-up delay-1"><div class="infra-num">500<span class="infra-unit">평</span></div><div class="infra-name">제1공장</div><div class="infra-desc">경기도 화성시 양감면<br>정문송산로 93번길 10-75<br>주력 생산 거점</div></div>
+      <div class="infra-card fade-up delay-2"><div class="infra-num">100<span class="infra-unit">평</span></div><div class="infra-name">제2공장</div><div class="infra-desc">경기도 화성시 양감면<br>댕이안길 42-12<br>고객사 전용 조립동 운영</div></div>
+      <div class="infra-card fade-up delay-3"><div class="infra-num">600<span class="infra-unit">평</span></div><div class="infra-name">총 생산 인프라</div><div class="infra-desc">항온항습 물류 창고 운영<br>ERP 기반 자재·공정 관리<br>클린룸 증설 계획 중</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 성장 연혁 -->
+<section class="section section--surface" id="history">
+  <div class="container">
+    <p class="section-label fade-up">History & Evolution</p>
+    <h2 class="section-title fade-up delay-1">성장 연혁</h2>
+    <p class="section-sub fade-up delay-2" style="margin-bottom:3rem">장비 제조 기반 구축부터 글로벌 양산 체계 확립까지</p>
+    <div style="max-width:700px">
+      <div class="timeline">
+        <div class="tl-item fade-up delay-1"><div class="tl-date">2020.10</div><div class="tl-title">SM 설립 — 장비 제조 기반 시작</div><div class="tl-desc">반도체·디스플레이 장비 제조를 위한 첫 발판. 소규모 정밀 조립 기반 형성.</div><span class="tl-badge">The Foundation</span></div>
+        <div class="tl-item fade-up delay-1"><div class="tl-date">2022.05~</div><div class="tl-title">SEMICS 프로젝트 확대</div><div class="tl-desc">SEMICS Chiller 및 SP/SE/LDE Loader 양산 진입. Loader 양산 체계 형성.</div><span class="tl-badge">Capacity Scaling</span></div>
+        <div class="tl-item fade-up delay-1"><div class="tl-date">2022.10</div><div class="tl-title">JEUS Wet Etching / 싸이로직 기어·구동축 검사기 양산</div><div class="tl-desc">반도체 세정 장비 및 자동차 부품 검사기 분야 본격 진입.</div></div>
+        <div class="tl-item fade-up delay-1"><div class="tl-date">2023.01~06</div><div class="tl-title">하이비젼 ST Loader 양산 / JET Turnkey 제작 시작</div><div class="tl-desc">Turnkey 제조 역량 확보. 다양한 고객사 대응 체계 구축.</div><span class="tl-badge">Institutionalization</span></div>
+        <div class="tl-item fade-up delay-1"><div class="tl-date">2024.11</div><div class="tl-title">오디아이(ODI) 법인 설립</div><div class="tl-desc">법인화 및 브랜드 정비. 제2공장 확보, 고객사 전용 조립 1·2동 운영 시작.</div><span class="tl-badge">ODI Co., Ltd.</span></div>
+        <div class="tl-item fade-up delay-1"><div class="tl-date">2025.02~</div><div class="tl-title">제2공장 운영 및 양산 확대</div><div class="tl-desc">PSYLOGIC 자동차 검사기 분야 확장. Loader/검사/Utility 지속 대응.</div></div>
+        <div class="tl-item fade-up delay-1"><div class="tl-date">2025~ Future</div><div class="tl-title">클린룸 증설 및 글로벌 시장 개척</div><div class="tl-desc">전용 클린룸 구축, 해외 거래처 확장, 글로벌 OEM/ODM 파트너로 도약.</div><span class="tl-badge">Global</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 비전 -->
+<section class="section section--dark" id="vision">
+  <div class="container">
+    <p class="section-label fade-up">Vision & Roadmap</p>
+    <h2 class="section-title fade-up delay-1">비전 및 성장 로드맵</h2>
+    <p class="section-sub fade-up delay-2" style="margin-bottom:3.5rem">양산 안정화에서 글로벌 OEM/ODM 파트너로, 4단계 성장 로드맵을 실행하고 있습니다.</p>
+
+    <div class="vision-grid fade-up delay-1">
+      <div class="vision-phase">
+        <div class="vision-dot"></div>
+        <div class="vision-num">Phase 1 · 현재</div>
+        <div class="vision-title">인프라 고도화</div>
+        <div class="vision-desc">대량생산 대응을 위한 공장 확장 및 전용 클린룸 증설. ERP 기반 생산 관리 체계 고도화.</div>
+      </div>
+      <div class="vision-phase">
+        <div class="vision-dot"></div>
+        <div class="vision-num">Phase 2</div>
+        <div class="vision-title">전략적 네트워크</div>
+        <div class="vision-desc">검증된 협력업체 발굴과 기술 교육 체계 구축. 안정적인 전문 인력풀 확보 및 파트너십 강화.</div>
+      </div>
+      <div class="vision-phase">
+        <div class="vision-dot"></div>
+        <div class="vision-num">Phase 3</div>
+        <div class="vision-title">포트폴리오 확장</div>
+        <div class="vision-desc">유망 기술 분야와의 연계를 통한 고객사 다변화. 반복 양산 프로젝트 규모 확대.</div>
+      </div>
+      <div class="vision-phase">
+        <div class="vision-dot" style="background:rgba(26,111,212,.3);box-shadow:0 0 0 2px rgba(26,111,212,.15)"></div>
+        <div class="vision-num">Phase 4 · 목표</div>
+        <div class="vision-title">글로벌 도약</div>
+        <div class="vision-desc">해외 거래처 확장과 글로벌 OEM/ODM 파트너십 구축. 국내 최고 수준의 정밀 제조 인프라 완성.</div>
+      </div>
+    </div>
+
+    <div class="vision-goals fade-up delay-2">
+      <div class="vg-card">
+        <div class="vg-icon">🏭</div>
+        <div class="vg-title">제조 인프라 완성</div>
+        <div class="vg-desc">클린룸 증설, 자동화 설비 도입, ERP 고도화를 통해 반도체·디스플레이 장비 전용 생산 라인을 구축합니다.</div>
+      </div>
+      <div class="vg-card">
+        <div class="vg-icon">🤝</div>
+        <div class="vg-title">파트너십 생태계</div>
+        <div class="vg-desc">SEMICS, JEUS, PSYLOGIC 등 핵심 고객사와의 장기 파트너십을 강화하고 신규 고객사를 지속 확장합니다.</div>
+      </div>
+      <div class="vg-card">
+        <div class="vg-icon">🌐</div>
+        <div class="vg-title">글로벌 OEM/ODM</div>
+        <div class="vg-desc">일본·대만·미국 등 해외 장비 제조사를 대상으로 OEM/ODM 제조 파트너십을 구축하고 수출 기반을 마련합니다.</div>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:3.5rem;padding:2.5rem;background:rgba(26,111,212,.08);border:1px solid rgba(26,111,212,.2);border-radius:var(--radius-lg)" class="fade-up">
+      <div style="font-family:var(--font-en);font-size:.72rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--color-accent);margin-bottom:.8rem">Our Mission</div>
+      <div style="font-family:var(--font-serif);font-size:clamp(1.2rem,2.5vw,1.7rem);font-weight:700;color:#fff;line-height:1.45;margin-bottom:.8rem">"고객의 생산 경쟁력이 곧 우리의 성공입니다."</div>
+      <div style="font-size:.875rem;color:rgba(255,255,255,.45);max-width:500px;margin:0 auto;line-height:1.8">관심과 책임, 그리고 완성도 높은 제조 파트너십으로 고객사와 동반 성장하는 제조 생태계를 만들어갑니다.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 조직 구조 -->
+<section class="section" id="organization">
+  <div class="container">
+    <p class="section-label fade-up">Organization</p>
+    <h2 class="section-title fade-up delay-1">조직 구조</h2>
+    <p class="section-sub fade-up delay-2" style="margin-bottom:2.5rem">전문 조직이 협력하여 납기와 품질을 동시에 실현합니다.</p>
+
+    <div class="org-wrap fade-up delay-1">
+      <!-- CEO -->
+      <div class="org-ceo-row">
+        <div class="org-ceo">
+          <div class="org-ceo-label">CEO &amp; SALES</div>
+          <div class="org-ceo-name">대표이사 &amp; 영업</div>
+        </div>
+      </div>
+
+      <!-- SVG 연결선: CEO→수직→수평→각 팀 수직 -->
+      <svg class="org-connector" viewBox="0 0 1000 70" preserveAspectRatio="none" height="70" aria-hidden="true">
+        <defs>
+          <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color:rgba(26,111,212,0);stop-opacity:1"/>
+            <stop offset="20%" style="stop-color:rgba(26,111,212,.35);stop-opacity:1"/>
+            <stop offset="80%" style="stop-color:rgba(26,111,212,.35);stop-opacity:1"/>
+            <stop offset="100%" style="stop-color:rgba(26,111,212,0);stop-opacity:1"/>
+          </linearGradient>
+        </defs>
+        <!-- CEO에서 내려오는 수직선 -->
+        <line x1="500" y1="0" x2="500" y2="30" stroke="rgba(26,111,212,.6)" stroke-width="2"/>
+        <!-- 수평 연결선 (4팀 중심: 12.5%, 37.5%, 62.5%, 87.5%) -->
+        <line x1="125" y1="30" x2="875" y2="30" stroke="url(#lineGrad)" stroke-width="2"/>
+        <!-- 각 팀으로 내려오는 수직선 -->
+        <line x1="125" y1="30" x2="125" y2="70" stroke="rgba(26,111,212,.35)" stroke-width="2"/>
+        <line x1="375" y1="30" x2="375" y2="70" stroke="rgba(26,111,212,.35)" stroke-width="2"/>
+        <line x1="625" y1="30" x2="625" y2="70" stroke="rgba(26,111,212,.35)" stroke-width="2"/>
+        <line x1="875" y1="30" x2="875" y2="70" stroke="rgba(26,111,212,.35)" stroke-width="2"/>
+        <!-- 팀 상단 원형 마커 -->
+        <circle cx="125" cy="70" r="4" fill="rgba(26,111,212,.5)"/>
+        <circle cx="375" cy="70" r="4" fill="rgba(26,111,212,.5)"/>
+        <circle cx="625" cy="70" r="4" fill="rgba(26,111,212,.5)"/>
+        <circle cx="875" cy="70" r="4" fill="rgba(26,111,212,.5)"/>
+      </svg>
+
+      <!-- 팀 카드 그리드 -->
+      <div class="org-teams">
+        <div class="org-team-card">
+          <div class="org-team-head"><div class="org-team-en">Production</div><div class="org-team-ko">생산팀</div></div>
+          <div class="org-team-body">
+            <div class="org-item">생산 1파트 — 양산장비 조립 및 세팅</div>
+            <div class="org-item">생산 2파트 — 모듈 및 서브 장비 조립</div>
+            <div class="org-item">전장 파트 — 정밀 장비 셋업·하드웨어 구성</div>
+          </div>
+        </div>
+        <div class="org-team-card">
+          <div class="org-team-head"><div class="org-team-en">Technology Dev.</div><div class="org-team-ko">기술개발팀</div></div>
+          <div class="org-team-body">
+            <div class="org-item">제어 파트 — 장비 테스트 및 검수</div>
+            <div class="org-item">SW 개발 — 제어 소프트웨어</div>
+            <div class="org-item">설계 지원 — 도면 검토 및 개선</div>
+          </div>
+        </div>
+        <div class="org-team-card">
+          <div class="org-team-head"><div class="org-team-en">Quality</div><div class="org-team-ko">품질팀</div></div>
+          <div class="org-team-body">
+            <div class="org-item">품질관리 체계 운영</div>
+            <div class="org-item">출하 전 전수 검사</div>
+            <div class="org-item">사전 테스트 프로세스</div>
+          </div>
+        </div>
+        <div class="org-team-card">
+          <div class="org-team-head"><div class="org-team-en">Management</div><div class="org-team-ko">경영지원팀</div></div>
+          <div class="org-team-body">
+            <div class="org-item">ERP 기반 자재·공정 관리</div>
+            <div class="org-item">납기·일정 관리</div>
+            <div class="org-item">물류·창고 운영</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:3rem" class="fade-up">
+      <a href="../contact/index.html" class="btn btn--primary">문의하기</a>
+      <a href="location.html" class="btn btn--outline-dark" style="margin-left:1rem">오시는 길</a>
+    </div>
+  </div>
+</section>
+
+<div id="site-footer" data-base="../"></div>
+<script>
+// 조직도 SVG 연결선 — 카드 실제 위치에 동적으로 맞춤
+function updateOrgLines() {
+  const svg = document.querySelector('.org-connector');
+  const cards = document.querySelectorAll('.org-teams .org-team-card');
+  const ceoEl = document.querySelector('.org-ceo');
+  if (!svg || cards.length !== 4 || !ceoEl) return;
+
+  const wrap = document.querySelector('.org-wrap');
+  const wRect = wrap.getBoundingClientRect();
+
+  // CEO 중심 x
+  const cRect = ceoEl.getBoundingClientRect();
+  const ceoCx = ((cRect.left + cRect.right) / 2 - wRect.left) / wRect.width * 1000;
+
+  // 각 카드 상단 중심 x
+  const xs = Array.from(cards).map(card => {
+    const r = card.getBoundingClientRect();
+    return ((r.left + r.right) / 2 - wRect.left) / wRect.width * 1000;
+  });
+
+  const hY = 30; // 수평선 Y
+
+  svg.innerHTML = `
+    <defs>
+      <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" style="stop-color:rgba(26,111,212,0)"/>
+        <stop offset="15%" style="stop-color:rgba(26,111,212,.4)"/>
+        <stop offset="85%" style="stop-color:rgba(26,111,212,.4)"/>
+        <stop offset="100%" style="stop-color:rgba(26,111,212,0)"/>
+      </linearGradient>
+    </defs>
+    <line x1="${ceoCx}" y1="0" x2="${ceoCx}" y2="${hY}" stroke="rgba(26,111,212,.65)" stroke-width="2"/>
+    <line x1="${xs[0]}" y1="${hY}" x2="${xs[3]}" y2="${hY}" stroke="url(#lineGrad)" stroke-width="2"/>
+    ${xs.map(x => `
+      <line x1="${x}" y1="${hY}" x2="${x}" y2="70" stroke="rgba(26,111,212,.4)" stroke-width="2"/>
+      <circle cx="${x}" cy="70" r="4" fill="rgba(26,111,212,.55)" stroke="#fff" stroke-width="1.5"/>
+    `).join('')}
+  `;
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  setTimeout(updateOrgLines, 100);
+});
+window.addEventListener('resize', updateOrgLines);
+</script>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>
