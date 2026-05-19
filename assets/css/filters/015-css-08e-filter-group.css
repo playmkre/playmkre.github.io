@@ -1,0 +1,13 @@
+/* Extracted from ODI_USER_PORTAL_IMPL_Q_REBUILD_08U_TV_STATUS_BOARD_FULLSCREEN_AND_SLIDE_RELAYOUT (3)(2).html :: style block 15 id=css-08e-filter-group :: OPT01 no semantic edits */
+
+.sfg-bar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;padding:8px 12px;background:var(--sf);border:1px solid var(--bd);border-radius:8px;margin-bottom:8px}
+.sfg-group{display:flex;gap:4px;align-items:center;flex-wrap:wrap;background:var(--sf2,rgba(88,166,255,.06));border:1px solid var(--bd);border-radius:7px;padding:3px 6px}
+.sfg-parent-btn{padding:3px 9px;border-radius:5px;font-size:10px;font-weight:700;cursor:pointer;border:1.5px solid var(--bd);background:var(--sf3,rgba(88,166,255,.10));color:var(--ts);transition:all .15s}
+.sfg-parent-btn.all-on{background:var(--ac);color:#fff;border-color:var(--ac)}
+.sfg-parent-btn.partial{background:var(--amd,rgba(249,115,22,.15));color:var(--am);border-color:var(--am)}
+.sfg-parent-btn.all-off{background:var(--sf);color:var(--tm);border-color:var(--bd)}
+.sfg-child-btn{padding:2px 7px;border-radius:5px;font-size:9px;font-weight:600;cursor:pointer;border:1px solid var(--bd);background:var(--sf);color:var(--tm);transition:all .15s}
+.sfg-child-btn.on{background:rgba(88,166,255,.2);color:var(--ac);border-color:var(--ac)}
+.sfg-sep{width:1px;height:18px;background:var(--bd);margin:0 2px}
+.sfg-standalone-btn{padding:3px 10px;border-radius:5px;font-size:10px;font-weight:600;cursor:pointer;border:1px solid var(--bd);background:var(--sf);color:var(--ts);transition:all .15s}
+.sfg-standalone-btn.on{background:rgba(88,166,255,.2);color:var(--ac);border-color:var(--ac)}

@@ -1,0 +1,23 @@
+/* Extracted from ODI_USER_PORTAL_IMPL_Q_REBUILD_08U_TV_STATUS_BOARD_FULLSCREEN_AND_SLIDE_RELAYOUT (3)(2).html :: style block 22 id=v086-refresh-filter-empty-fixes :: OPT01 no semantic edits */
+
+
+#page-schedule .sched-detail-refresh-btn:disabled{
+  opacity:.32!important;
+  cursor:not-allowed!important;
+  color:var(--tm)!important;
+  border-color:var(--bd)!important;
+  background:var(--sf2)!important;
+}
+#page-schedule #ganttEmpty.v086-empty-state{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  min-height:220px!important;
+  border:1px dashed var(--bd)!important;
+  border-radius:10px!important;
+  background:var(--sf)!important;
+  color:var(--tm)!important;
+  text-align:center!important;
+  padding:28px!important;
+  margin-top:8px!important;
+}

@@ -1,0 +1,93 @@
+/* Extracted from ODI_USER_PORTAL_IMPL_Q_REBUILD_08U_TV_STATUS_BOARD_FULLSCREEN_AND_SLIDE_RELAYOUT (3)(2).html :: style block 13 id=css-08c1-dashboard-fix :: OPT01 no semantic edits */
+
+/* ── 08C-1: 품질 대시보드 다크모드 버튼/KPI 보정 ── */
+
+/* q-btn-readiness 계열 */
+.q-btn-readiness, button.q-btn-readiness {
+  background: var(--acd, rgba(88,166,255,.12)) !important;
+  color: var(--ac) !important;
+  border: 1px solid var(--ac) !important;
+  padding: 5px 14px; border-radius: 7px; font-size: 11px; font-weight: 600; cursor: pointer;
+}
+.q-btn-readiness:hover { opacity: .85 !important; }
+
+/* btn-sm 계열 */
+.btn-sm {
+  background: var(--sf) !important;
+  color: var(--ts) !important;
+  border: 1px solid var(--bd) !important;
+}
+.btn-sm:hover { border-color: var(--ac) !important; color: var(--ac) !important; }
+
+/* 대시보드 내부 일반 버튼 */
+#page-quality-dash button:not(.qd-tab):not(.btn-pi):not(.btn-ac) {
+  background: var(--sf) !important;
+  color: var(--ts) !important;
+  border: 1px solid var(--bd) !important;
+}
+
+/* KPI 카드 그리드 */
+.qd-kpi-row {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)) !important;
+  gap: 8px !important;
+  margin-bottom: 14px !important;
+}
+.qd-kpi-card, .qd-kpi {
+  background: var(--sf) !important;
+  border: 1px solid var(--bd) !important;
+  border-radius: 8px !important;
+  padding: 10px 12px !important;
+  min-width: 0 !important;
+}
+
+/* 월별 차트 + 중요도 분포 2분할 */
+.qdash-monthly-severity-row {
+  display: grid !important;
+  grid-template-columns: minmax(0,1fr) minmax(0,1fr) !important;
+  gap: 14px !important;
+  margin-bottom: 14px !important;
+}
+.qdash-monthly-card, .qdash-severity-card {
+  min-height: 320px !important;
+  background: var(--sf) !important;
+  border: 1px solid var(--bd) !important;
+  border-radius: 10px !important;
+  padding: 14px !important;
+  overflow: hidden !important;
+}
+.qdash-monthly-card .qd-chart-wrap { min-height: 240px !important; }
+.qdash-severity-card .qd-donut-wrap { min-height: 200px !important; }
+
+/* 모델별/호기별 차트 카드 */
+.qdash-model-card, .qdash-machine-card {
+  min-height: 280px !important;
+  background: var(--sf) !important;
+  border: 1px solid var(--bd) !important;
+  border-radius: 10px !important;
+  padding: 14px !important;
+}
+/* Pareto bar 크기 확대 */
+.qd-bar-row { margin-bottom: 5px !important; }
+.qd-bar-track { height: 14px !important; border-radius: 3px !important; }
+.qd-bar-fill { min-width: 4px !important; border-radius: 3px !important; }
+.qd-bar-label { font-size: 10px !important; }
+.qd-bar-count { font-size: 10px !important; font-weight: 700 !important; }
+
+/* select 화살표 */
+#page-quality-dash select {
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath fill='%2394a3b8' d='M1 1l5 5 5-5'/%3E%3C/svg%3E") !important;
+  background-repeat: no-repeat !important;
+  background-position: right 8px center !important;
+  background-color: var(--sf) !important;
+  padding-right: 26px !important;
+  color: var(--ts) !important;
+  border-color: var(--bd) !important;
+}
+[data-theme="light"] #page-quality-dash select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath fill='%231f2328' d='M1 1l5 5 5-5'/%3E%3C/svg%3E") !important;
+  background-color: #fff !important;
+  color: #1f2328 !important;
+}

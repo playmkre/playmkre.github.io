@@ -1,0 +1,94 @@
+/* Extracted from ODI_USER_PORTAL_IMPL_Q_REBUILD_08U_TV_STATUS_BOARD_FULLSCREEN_AND_SLIDE_RELAYOUT (3)(2).html :: style block 12 id=q08b-quality-ui-recheck-fix :: OPT01 no semantic edits */
+
+/* 08B_REVIEWED_FIXED: 품질관리 화면 DOM 구조/다크모드/비율 보정 */
+#page-quality-main{overflow-x:hidden;}
+#page-quality-main .pg-hd{margin-bottom:14px;}
+#page-quality-main .pg-title{font-size:19px;}
+#page-quality-main .qd-tabbar{gap:2px;background:transparent;border-bottom:1px solid var(--bd);margin-bottom:12px;}
+#page-quality-main .qd-tab{background:transparent!important;color:var(--ts);border-radius:6px 6px 0 0;border:1px solid transparent;border-bottom:2px solid transparent;}
+#page-quality-main .qd-tab:hover{background:var(--sf2)!important;color:var(--tp);border-color:var(--bd);}
+#page-quality-main .qd-tab.active{background:var(--sf)!important;color:var(--ac)!important;border-color:var(--bd);border-bottom-color:var(--ac);}
+#page-quality-main .q-purpose-card,
+#page-quality-main .qd-panel-box,
+#page-quality-main .q-kpi-mini,
+#page-quality-main .q-issue-list-shell,
+#page-quality-main .q-issue-detail-shell,
+#page-quality-main .qd-tab-empty,
+#page-quality-main .qd-r-panel,
+#page-quality-main .card{
+  background:var(--sf)!important;
+  color:var(--tp)!important;
+  border:1px solid var(--bd)!important;
+  border-radius:9px!important;
+  box-shadow:none!important;
+}
+#page-quality-main .q-purpose-card{font-size:10.5px;color:var(--ts)!important;padding:8px 11px;margin-bottom:10px;line-height:1.55;}
+#page-quality-main .q-purpose-card strong{color:var(--tp)!important;}
+#page-quality-main .q-issue-kpi-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-bottom:10px;}
+#page-quality-main .q-kpi-mini{padding:8px 10px;min-width:0;}
+#page-quality-main .q-kpi-label{font-size:9.5px;color:var(--tm);}
+#page-quality-main .q-kpi-value{font-size:20px;font-weight:800;line-height:1.2;}
+#page-quality-main .q-kpi-value.ac{color:var(--ac);} #page-quality-main .q-kpi-value.rd{color:var(--rd);} #page-quality-main .q-kpi-value.gr{color:var(--gr);} #page-quality-main .q-kpi-value.am{color:var(--am);}
+#page-quality-main .q-issue-layout-shell{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:10px;align-items:stretch;max-width:100%;overflow:hidden;}
+#page-quality-main .q-issue-list-shell{min-width:0;overflow:auto;padding:8px;max-height:calc(100vh - 330px);}
+#page-quality-main .q-issue-detail-shell{min-width:0;overflow:auto;padding:12px;max-height:calc(100vh - 330px);}
+#page-quality-main .q-detail-title{font-size:11px;font-weight:800;color:var(--tp);margin-bottom:8px;padding-bottom:7px;border-bottom:1px solid var(--bd);}
+#page-quality-main .q-detail-empty{font-size:10.5px;color:var(--tm);line-height:1.7;padding:16px 4px;text-align:center;}
+#page-quality-main #qmain-issues-content{min-width:0;max-width:100%;overflow:auto;}
+#page-quality-main #qmain-issues-content table,
+#page-quality-main .qd-compact-tbl,
+#page-quality-main .qd-table,
+#page-quality-main .q-raw-warning-table{width:100%;max-width:100%;table-layout:fixed;border-collapse:collapse;}
+#page-quality-main #qmain-issues-content th,
+#page-quality-main #qmain-issues-content td,
+#page-quality-main .qd-compact-tbl th,
+#page-quality-main .qd-compact-tbl td,
+#page-quality-main .qd-table th,
+#page-quality-main .qd-table td{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+#page-quality-main .qd-3pane-wrap{grid-template-columns:220px minmax(0,1fr) 320px!important;height:min(680px,calc(100vh - 250px));max-width:100%;}
+#page-quality-main .qd-3col,
+#page-quality-main .qd-3col.wide{grid-template-columns:220px minmax(0,1fr) 320px!important;max-width:100%;}
+#page-quality-main .qd-pane{background:var(--sf)!important;border-color:var(--bd)!important;color:var(--tp)!important;}
+#page-quality-main .qd-pane-hd,
+#page-quality-main .qd-panel-title{color:var(--tp)!important;border-bottom-color:var(--bd)!important;}
+#page-quality-main .qd-raw-tbl th,
+#page-quality-main .qd-compact-tbl th,
+#page-quality-main .q-field-table th{background:var(--sf2)!important;color:var(--tp)!important;border-bottom:1px solid var(--bd)!important;}
+#page-quality-main .qd-raw-tbl td,
+#page-quality-main .qd-compact-tbl td,
+#page-quality-main .q-field-table td{background:var(--sf)!important;color:var(--ts)!important;border-bottom:1px solid var(--bd2)!important;}
+#page-quality-main .qd-raw-tbl tr:hover td,
+#page-quality-main .qd-compact-tbl tr:hover td{background:var(--sf2)!important;color:var(--tp)!important;}
+#page-quality-main .qd-sheet-btn:hover{background:var(--sf2)!important;color:var(--tp)!important;}
+#page-quality-main .qd-sheet-btn.active{background:var(--acd)!important;color:var(--ac)!important;border:1px solid rgba(88,166,255,.30);}
+#page-quality-main input,
+#page-quality-main select,
+#page-quality-main textarea,
+#page-quality-main .form-input{background:var(--input-bg)!important;color:var(--tp)!important;border:1px solid var(--bd)!important;}
+#page-quality-main select option{background:var(--sf)!important;color:var(--tp)!important;}
+#page-quality-main .q-btn-reupload,
+#page-quality-main label.q-btn-reupload,
+#page-quality-main .btn-pi{display:inline-flex!important;align-items:center;gap:6px;background:var(--acd)!important;color:var(--ac)!important;border:1px solid rgba(88,166,255,.42)!important;border-radius:7px!important;padding:6px 14px!important;font-size:11px!important;font-weight:700!important;line-height:1.3!important;box-shadow:none!important;}
+#page-quality-main .q-btn-reset-upload,
+#page-quality-main button[onclick*="resetQDefectData"],
+#page-quality-main button[onclick*="_qRawResetFilter"],
+#page-quality-main button[onclick*="_qRawFilter"],
+#page-quality-main .q-btn-filter-reset{display:inline-flex!important;align-items:center;gap:5px;background:var(--rdd)!important;color:var(--rd)!important;border:1px solid rgba(248,81,73,.42)!important;border-radius:7px!important;padding:6px 12px!important;font-size:10.5px!important;font-weight:700!important;line-height:1.3!important;box-shadow:none!important;}
+#page-quality-main button span,
+#page-quality-main label span{background:transparent!important;}
+#page-quality-main .qd-file-meta,
+#page-quality-main .qd-file-meta strong{background:transparent!important;color:var(--ts)!important;}
+#page-quality-main .qd-file-badge{background:var(--sf2)!important;color:var(--ts)!important;border:1px solid var(--bd)!important;}
+#page-quality-main *::-webkit-scrollbar{width:7px;height:7px;}
+#page-quality-main *::-webkit-scrollbar-track{background:transparent!important;}
+#page-quality-main *::-webkit-scrollbar-thumb{background:var(--sf3)!important;border-radius:999px;border:1px solid var(--bd)!important;}
+[data-theme="dark"] #page-quality-main [style*="background:#fff"],
+[data-theme="dark"] #page-quality-main [style*="background: #fff"],
+[data-theme="dark"] #page-quality-main [style*="background:white"],
+[data-theme="dark"] #page-quality-main [style*="background: white"]{background:var(--sf)!important;color:var(--tp)!important;}
+@media(max-width:1180px){
+  #page-quality-main .q-issue-layout-shell{grid-template-columns:1fr;}
+  #page-quality-main .q-issue-detail-shell{max-height:260px;}
+  #page-quality-main .qd-3pane-wrap,#page-quality-main .qd-3col,#page-quality-main .qd-3col.wide{grid-template-columns:1fr!important;height:auto;}
+  #page-quality-main .q-issue-kpi-row{grid-template-columns:repeat(2,minmax(0,1fr));}
+}

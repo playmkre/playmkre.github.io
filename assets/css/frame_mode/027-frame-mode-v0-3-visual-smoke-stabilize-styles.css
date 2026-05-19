@@ -1,0 +1,58 @@
+/* Extracted from ODI_USER_PORTAL_IMPL_Q_REBUILD_08U_TV_STATUS_BOARD_FULLSCREEN_AND_SLIDE_RELAYOUT (3)(2).html :: style block 27 id=frame-mode-v0-3-visual-smoke-stabilize-styles :: OPT01 no semantic edits */
+
+/* ────────────────────────────────────────────────────────
+   V0.3 stabilization rules — frame-only scope, additive only.
+   기존 selector는 재정의하지 않고, frame DOM에 한정한 보강만 적용.
+   ──────────────────────────────────────────────────────── */
+
+/* (S1) schedule 계열 라우트는 focus 모드에서도 본문 폭을 우선한다.
+       v0.2 REVIEWED_FIXED는 thevc-frame만 가드했음 → focus 모드로 확장. */
+body[data-layout-mode="focus"][data-frame-route^="schedule"] #frameRightPanel { display:none; }
+
+/* (S2) prod-process 라우트도 본문 폭이 중요하므로 우측 패널 축소. */
+body[data-layout-mode="thevc-frame"][data-frame-route="prod-process"] #frameRightPanel {
+  width: 220px;
+  min-width: 220px;
+}
+
+/* (S3) thevc-frame 모드의 frame profile header와 tabs는 #main-content 내부에 있으므로
+       기존 padding을 깨지 않도록 음수 margin을 사용하지 않는다.
+       (단지 시각적 sticky 안전을 위해 z-index만 안정화.) */
+body[data-layout-mode="thevc-frame"] #frameProfileHeader,
+body[data-layout-mode="thevc-frame"] #frameTabs,
+body[data-layout-mode="focus"]       #frameProfileHeader,
+body[data-layout-mode="focus"]       #frameTabs {
+  position: relative;
+  z-index: 5;
+}
+
+/* (S4) compact 모드 bottom drawer 고정 시 본문 하단이 가려지지 않도록 빈 공간 확보.
+       기존 .page 또는 #main-content padding을 직접 수정하지 않고
+       body에 fallback bottom padding을 frame mode scope로만 추가한다. */
+body[data-layout-mode="compact"] #frameBottomDrawer { z-index: 95; }
+
+/* (S5) thevc-frame + compact 모드의 quick rail이 작은 화면에서 본문을 침범하지 않도록
+       max-width 안전 가드. 기존 .page 폭은 변경하지 않음. */
+@media (max-width: 1200px) {
+  body[data-layout-mode="thevc-frame"] #frameRightPanel { width: 220px; min-width: 220px; }
+}
+@media (max-width: 980px) {
+  body[data-layout-mode="thevc-frame"] #frameRightPanel { display: none; }
+  body[data-layout-mode="thevc-frame"] #frameQuickRail  { display: none; }
+}
+
+/* (S6) frameTabs overflow-x 가독성 보강 — scrollbar는 가늘게. */
+body[data-layout-mode="thevc-frame"] #frameTabs::-webkit-scrollbar,
+body[data-layout-mode="focus"]       #frameTabs::-webkit-scrollbar,
+body[data-layout-mode="compact"]     #frameTabs::-webkit-scrollbar {
+  height: 4px;
+}
+body[data-layout-mode="thevc-frame"] #frameTabs::-webkit-scrollbar-thumb,
+body[data-layout-mode="focus"]       #frameTabs::-webkit-scrollbar-thumb,
+body[data-layout-mode="compact"]     #frameTabs::-webkit-scrollbar-thumb {
+  background: var(--bd2);
+  border-radius: 2px;
+}
+
+/* (S7) classic 모드는 변경 없음 — 명시적 비어있는 selector로 의도를 문서화. */
+body[data-layout-mode="classic"] { /* no rules — classic is reference baseline */ }

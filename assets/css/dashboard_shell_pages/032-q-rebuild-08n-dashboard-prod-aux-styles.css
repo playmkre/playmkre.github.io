@@ -1,0 +1,61 @@
+/* Extracted from ODI_USER_PORTAL_IMPL_Q_REBUILD_08U_TV_STATUS_BOARD_FULLSCREEN_AND_SLIDE_RELAYOUT (3)(2).html :: style block 32 id=q-rebuild-08n-dashboard-prod-aux-styles :: OPT01 no semantic edits */
+
+/* ============================================================================
+ * Q_REBUILD_08N_DASHBOARD_AND_PRODUCTION_AUX_PAGE_PATCH_REVIEWED_FIXED
+ * ----------------------------------------------------------------------------
+ * 대시보드 3개 + 생산관리 보조 3개 페이지 보강용 보조 CSS.
+ * 새 클래스는 모두 `.n08-*` prefix 사용. 전역 selector 무변경.
+ * ============================================================================ */
+
+/* shared badge */
+.n08-badge{
+  display:inline-flex; align-items:center; gap:3px;
+  font-size:9px; font-weight:700; letter-spacing:0.3px;
+  padding:2px 7px; border-radius:3px;
+  font-family:'JetBrains Mono','Consolas',monospace;
+}
+.n08-badge.ok     { background:rgba(34,197,94,0.12); color:#86efac; border:1px solid rgba(34,197,94,0.30); }
+.n08-badge.warn   { background:rgba(245,158,11,0.12); color:#fcd34d; border:1px solid rgba(245,158,11,0.30); }
+.n08-badge.err    { background:rgba(239,68,68,0.12); color:#fca5a5; border:1px solid rgba(239,68,68,0.30); }
+.n08-badge.info   { background:rgba(34,211,238,0.10); color:#67e8f9; border:1px solid rgba(34,211,238,0.30); }
+.n08-badge.neutral{ background:rgba(168,162,158,0.08); color:var(--tm,#8da0c1); border:1px dashed rgba(168,162,158,0.40); }
+
+/* dash-progress table rows */
+.n08-dp-row{ display:contents; }
+.n08-dp-row td{ padding:4px 8px; border-bottom:1px solid rgba(168,162,158,0.08); color:var(--tp,#e6ecf5); font-size:10.5px; }
+.n08-dp-row td.mono{ font-family:'JetBrains Mono',monospace; }
+.n08-dp-row.urgent td{ background:rgba(239,68,68,0.04); }
+.n08-dp-row.ship td{ background:rgba(34,211,238,0.04); }
+
+/* quality KPI block */
+.n08-q-kpi{
+  display:grid; grid-template-columns:repeat(auto-fill,minmax(120px,1fr)); gap:7px;
+  margin-bottom:8px;
+}
+.n08-q-kpi .k{
+  background:rgba(255,255,255,0.025);
+  border:1px solid var(--bd,rgba(168,162,158,0.30));
+  border-radius:6px; padding:8px 10px;
+}
+.n08-q-kpi .k .l{ font-size:9px; color:var(--tm,#8da0c1); margin-bottom:2px; text-transform:uppercase; letter-spacing:0.3px; }
+.n08-q-kpi .k .v{ font-size:17px; font-weight:800; font-family:'JetBrains Mono',monospace; color:var(--ts,#cfd6e4); }
+
+/* team-overview supplement */
+.n08-no-personal{
+  padding:7px 10px; margin-bottom:8px;
+  background:rgba(34,197,94,0.05); border:1px solid rgba(34,197,94,0.20);
+  border-radius:5px; font-size:10px; color:#86efac;
+}
+.n08-note{
+  font-size:10px; color:var(--tm,#8da0c1); line-height:1.55;
+  padding:8px 10px; background:rgba(168,162,158,0.04);
+  border:1px solid var(--bd,rgba(168,162,158,0.25)); border-radius:5px;
+  margin-top:8px;
+}
+.n08-note strong{ color:var(--ts,#cfd6e4); }
+.n08-note.warn{ background:rgba(245,158,11,0.04); border-color:rgba(245,158,11,0.22); }
+
+/* headcount: remove disabled save button appearance */
+#page-prod-headcount button[disabled]:not(.ph-dis-input~button):not(.n08-ok-btn){
+  display:none !important;
+}
