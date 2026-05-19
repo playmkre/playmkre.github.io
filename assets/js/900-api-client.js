@@ -1,4 +1,4 @@
-/* TechSysLab / ODI API Client Phase 01
+/* TechSysLab / ODI API Client Phase 12
  * Purpose: connect the existing static GitHub Pages portal to the future FastAPI server.
  * This file is intentionally read-only for UI data. It must not hide menus, block routes,
  * or overwrite legacy localStorage bridge data.
@@ -75,6 +75,14 @@
   }
 
   function get(path, options) { return request(path, Object.assign({}, options || {}, { method: 'GET' })); }
+
+  function postForm(path, formData, options) {
+    return request(path, Object.assign({}, options || {}, {
+      method: 'POST',
+      body: formData
+    }));
+  }
+
   function postJson(path, body, options) {
     return request(path, Object.assign({}, options || {}, {
       method: 'POST',
@@ -84,16 +92,18 @@
   }
 
   window.TechSysLabApiClient = {
-    version: 'API_SERVER_EXPANSION_PHASE_01',
+    version: 'API_SERVER_EXPANSION_PHASE_12_RELEASE_QA_REGRESSION_DEPLOY_CANDIDATE',
     storageKey: STORAGE_KEY,
     defaultApiBase: DEFAULT_API_BASE,
     getApiBase: getApiBase,
     setApiBase: setApiBase,
     request: request,
     get: get,
-    postJson: postJson
+    postJson: postJson,
+    postForm: postForm
   };
 
   window.techsyslabApiGet = get;
   window.techsyslabApiPostJson = postJson;
+  window.techsyslabApiPostForm = postForm;
 })();
