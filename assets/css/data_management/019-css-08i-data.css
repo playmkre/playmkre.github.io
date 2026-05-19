@@ -1,0 +1,67 @@
+/* Extracted from ODI_USER_PORTAL_IMPL_Q_REBUILD_08U_TV_STATUS_BOARD_FULLSCREEN_AND_SLIDE_RELAYOUT (3)(2).html :: style block 19 id=css-08i-data :: OPT01 no semantic edits */
+
+/* ── 08I: 데이터 관리 6개 페이지 ── */
+/* 공통 */
+.di-notice{background:var(--sf);border:1.5px solid var(--bd);border-radius:9px;padding:12px 16px;margin-bottom:12px}
+.di-notice.info{border-color:var(--ac)}.di-notice.warn{border-color:var(--am)}.di-notice.ok{border-color:var(--gr)}
+.di-section-title{font-size:11px;font-weight:700;color:var(--ts);margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.di-stat-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px;margin-bottom:12px}
+.di-stat{background:var(--sf);border:1px solid var(--bd);border-radius:8px;padding:9px 12px}
+.di-stat.rd{border-color:var(--rd)}.di-stat.am{border-color:var(--am)}.di-stat.ok{border-color:var(--gr)}
+.di-stat-num{font-size:20px;font-weight:800;color:var(--ts)}
+.di-stat-label{font-size:9px;color:var(--tm);margin-top:2px}
+.di-tbl-wrap{overflow-x:auto;margin-bottom:12px}
+.di-tbl{border-collapse:collapse;width:100%;min-width:420px;font-size:10px}
+.di-tbl th{background:var(--bd);color:var(--tm);font-weight:600;padding:5px 8px;text-align:left;position:sticky;top:0;z-index:2;white-space:nowrap}
+.di-tbl td{padding:4px 8px;border-bottom:1px solid var(--bd);color:var(--ts);max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.di-tbl tr:hover td{background:rgba(88,166,255,.06)}
+.di-badge{display:inline-block;padding:1px 7px;border-radius:8px;font-size:9px;font-weight:600;background:var(--bd);color:var(--tm)}
+.di-badge.ok{background:rgba(34,197,94,.15);color:var(--gr)}
+.di-badge.warn{background:rgba(249,115,22,.15);color:var(--am)}
+.di-badge.err{background:rgba(239,68,68,.15);color:var(--rd)}
+.di-badge.todo{background:var(--bd);color:var(--tm);opacity:.7}
+.di-hub{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px;margin-bottom:12px}
+.di-hub-btn{background:var(--sf);border:1px solid var(--bd);border-radius:8px;padding:10px 12px;cursor:pointer;transition:all .15s;text-align:left}
+.di-hub-btn:hover{border-color:var(--ac);background:rgba(88,166,255,.07)}
+.di-hub-title{font-size:11px;font-weight:700;color:var(--ts)}
+.di-hub-sub{font-size:9px;color:var(--tm);margin-top:2px}
+/* 업로드 이력 timeline */
+.di-timeline{display:flex;flex-direction:column;gap:8px;max-height:280px;overflow-y:auto}
+.di-tl-item{background:var(--sf);border:1px solid var(--bd);border-radius:7px;padding:8px 10px;border-left:3px solid var(--bd)}
+.di-tl-item.upload{border-left-color:var(--ac)}
+.di-tl-item.parse{border-left-color:var(--gr)}
+.di-tl-item.warn{border-left-color:var(--am)}
+.di-tl-type{font-size:10px;font-weight:700;color:var(--ts);margin-bottom:2px}
+.di-tl-desc{font-size:10px;color:var(--tm)}
+/* 데이터 검증 카드 */
+.di-valid-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px;margin-bottom:12px}
+.di-valid-card{background:var(--sf);border:1px solid var(--bd);border-radius:8px;padding:10px 12px}
+.di-valid-card.err{border-color:var(--rd)}.di-valid-card.warn{border-color:var(--am)}.di-valid-card.ok{border-color:var(--gr)}
+.di-valid-cnt{font-size:20px;font-weight:800;color:var(--ts)}
+.di-valid-label{font-size:9px;color:var(--tm);margin-top:2px}
+/* 파일 매핑 */
+.di-mapping-status{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px;align-items:stretch}
+.di-map-block{flex:1;min-width:120px;background:var(--sf);border:1px solid var(--bd);border-radius:8px;padding:10px;text-align:center}
+.di-map-block.ok{border-color:var(--gr)}.di-map-block.warn{border-color:var(--am)}.di-map-block.todo{border-color:var(--bd)}
+.di-map-icon{font-size:18px;margin-bottom:4px}
+.di-map-label{font-size:9px;color:var(--tm);margin-top:2px}
+/* 다운로드 카드 */
+.di-dl-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin-bottom:12px}
+.di-dl-card{background:var(--sf);border:1px solid var(--bd);border-radius:9px;padding:12px}
+.di-dl-card.ready{border-color:var(--ac)}.di-dl-card.todo{border-color:var(--bd);opacity:.7}
+.di-dl-title{font-size:11px;font-weight:700;color:var(--ts);margin-bottom:4px}
+.di-dl-desc{font-size:9px;color:var(--tm);margin-bottom:8px}
+/* 사용 가이드 */
+.di-guide-flow{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;align-items:center}
+.di-flow-step{background:var(--sf);border:1px solid var(--bd);border-radius:7px;padding:8px 12px;flex:1;min-width:100px}
+.di-flow-step.active{border-color:var(--ac);background:rgba(88,166,255,.07)}
+.di-flow-num{font-size:9px;color:var(--tm)}
+.di-flow-label{font-size:10px;font-weight:700;color:var(--ts);margin-top:2px}
+.di-guide-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px;margin-bottom:12px}
+.di-guide-card{background:var(--sf);border:1px solid var(--bd);border-radius:8px;padding:12px}
+.di-guide-card-title{font-size:11px;font-weight:700;color:var(--ts);margin-bottom:8px}
+.di-guide-card ul{margin:0;padding-left:14px;font-size:10px;color:var(--tm);line-height:1.8}
+@media(max-width:768px){
+  .di-stat-row,.di-valid-cards,.di-hub,.di-dl-grid,.di-guide-cards{grid-template-columns:repeat(2,1fr)}
+  .di-mapping-status,.di-guide-flow{flex-direction:column}
+}

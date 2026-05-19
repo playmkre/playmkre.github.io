@@ -1,0 +1,204 @@
+/* Extracted from ODI_USER_PORTAL_IMPL_Q_REBUILD_08U_TV_STATUS_BOARD_FULLSCREEN_AND_SLIDE_RELAYOUT (3)(2).html :: style block 26 id=frame-mode-v0-2-safe-apply-styles :: OPT01 no semantic edits */
+
+/* ────────────────────────────────────────────────────────
+   FRAME MODE v0.2 — 신규 골격용 CSS (scope 제한)
+   기본 원칙: 모든 frame-mode 효과는 body[data-layout-mode="..."]
+   selector 안에서만 적용한다. 기존 전역 selector는 건드리지 않는다.
+   ──────────────────────────────────────────────────────── */
+
+/* 공통 토큰 (frame mode 한정 변수) */
+:root {
+  --fm-profile-h:          56px;
+  --fm-tabs-h:             40px;
+  --fm-right-panel-w:      260px;
+  --fm-quick-rail-w:       50px;
+  --fm-bottom-drawer-h:    44px;
+  --fm-transition:         0.22s ease;
+}
+
+/* 신규 요소: 기본 숨김 (classic 회귀 안전) */
+#frameProfileHeader,
+#frameTabs,
+#frameRightPanel,
+#frameQuickRail,
+#frameBottomDrawer,
+#frameBackdrop { display: none; }
+
+/* ===== 모드 전환 토글 (topbar 우측 내장, 모든 모드에서 표시) ===== */
+.fm-toggle {
+  display:inline-flex; align-items:center; gap:0;
+  background:var(--sf2); border:1px solid var(--bd);
+  border-radius:6px; padding:2px; margin-left:8px;
+}
+.fm-toggle button {
+  background:transparent; border:0; color:var(--ts);
+  padding:4px 9px; font-size:10px; line-height:1;
+  border-radius:4px; cursor:pointer;
+  font-family:inherit; transition: background .15s, color .15s;
+}
+.fm-toggle button:hover { color:var(--tp); background:var(--sf3); }
+.fm-toggle button.fm-on {
+  background:var(--ac); color:#fff; font-weight:600;
+}
+
+/* ===== 신규 요소 골격 스타일 (display는 모드별 selector가 켠다) ===== */
+#frameProfileHeader {
+  height:var(--fm-profile-h);
+  background:var(--sf); border-bottom:1px solid var(--bd);
+  padding:0 16px;
+  align-items:center; gap:12px;
+}
+.fph-avatar {
+  width:36px; height:36px; border-radius:50%;
+  background:var(--ac); color:#fff;
+  display:flex; align-items:center; justify-content:center;
+  font-weight:700; font-size:12px;
+}
+.fph-info { display:flex; flex-direction:column; }
+.fph-title { font-size:12px; font-weight:600; color:var(--tp); }
+.fph-meta  { font-size:10px; color:var(--ts); margin-top:2px; }
+.fph-stats { margin-left:auto; display:flex; gap:14px; font-size:10px; color:var(--ts); }
+.fph-stat b { color:var(--tp); font-size:11px; margin-right:4px; }
+
+#frameTabs {
+  height:var(--fm-tabs-h);
+  background:var(--sf); border-bottom:1px solid var(--bd);
+  padding:0 16px;
+  align-items:center; gap:4px;
+  overflow-x:auto;
+}
+.ft-tab {
+  padding:6px 12px; font-size:10.5px; color:var(--ts);
+  border-radius:5px; cursor:pointer; white-space:nowrap;
+  border:1px solid transparent;
+  background:transparent;
+  transition: background .15s, color .15s;
+  font-family:inherit;
+}
+.ft-tab:hover { background:var(--sf2); color:var(--tp); }
+.ft-tab.active {
+  background:var(--acd); color:var(--ac);
+  border-color:var(--ach);
+}
+
+#frameRightPanel {
+  width:var(--fm-right-panel-w);
+  min-width:var(--fm-right-panel-w);
+  background:var(--sf); border-left:1px solid var(--bd);
+  overflow-y:auto; padding:12px;
+  flex-direction:column; gap:10px;
+}
+.frp-header {
+  display:flex; align-items:center; justify-content:space-between;
+  gap:8px; padding:4px 2px 8px;
+  border-bottom:1px solid var(--bd2); margin-bottom:6px;
+}
+.frp-title {
+  font-size:10.5px; font-weight:700; color:var(--tp);
+  text-transform:uppercase; letter-spacing:.4px;
+}
+.frp-focus-btn {
+  background:var(--acd); border:1px solid var(--ach); color:var(--ac);
+  font-size:9.5px; padding:3px 8px; border-radius:4px; cursor:pointer;
+  font-family:inherit; line-height:1.4;
+  transition: background .15s, color .15s;
+}
+.frp-focus-btn:hover { background:var(--ach); color:var(--tp); }
+.frp-body { display:flex; flex-direction:column; gap:8px; }
+.frp-card {
+  background:var(--sf2); border:1px solid var(--bd2);
+  border-radius:6px; padding:10px;
+}
+.frp-card-title {
+  font-size:9.5px; color:var(--tm); text-transform:uppercase;
+  letter-spacing:.4px; margin-bottom:6px; font-weight:600;
+}
+.frp-card-body { font-size:11px; color:var(--tp); line-height:1.5; }
+.frp-card-link {
+  display:block; cursor:pointer; color:var(--ac); font-size:11px;
+  padding:3px 0;
+}
+.frp-card-link:hover { color:var(--tp); text-decoration:underline; }
+
+#frameQuickRail {
+  width:var(--fm-quick-rail-w);
+  min-width:var(--fm-quick-rail-w);
+  background:var(--sf); border-left:1px solid var(--bd);
+  flex-direction:column; align-items:center;
+  padding:10px 0; gap:6px;
+}
+.fqr-btn {
+  width:36px; height:36px; border-radius:6px;
+  background:transparent; border:1px solid var(--bd2);
+  color:var(--ts); cursor:pointer;
+  display:flex; align-items:center; justify-content:center;
+  font-size:14px;
+  transition: background .15s, color .15s, border-color .15s;
+  font-family:inherit;
+}
+.fqr-btn:hover {
+  background:var(--acd); color:var(--ac); border-color:var(--ach);
+}
+.fqr-btn.fqr-on {
+  background:var(--ac); color:#fff; border-color:var(--ac);
+}
+
+#frameBottomDrawer {
+  position:fixed; left:0; right:0; bottom:0;
+  height:var(--fm-bottom-drawer-h);
+  background:var(--sf); border-top:1px solid var(--bd);
+  padding:0 16px;
+  align-items:center; gap:16px;
+  font-size:11px; color:var(--ts); z-index:90;
+  overflow-x:auto;
+}
+.fbd-label {
+  font-size:9px; color:var(--tm); text-transform:uppercase;
+  letter-spacing:.4px;
+}
+.fbd-stat b { color:var(--tp); margin-right:4px; }
+.fbd-close {
+  margin-left:auto; background:transparent; border:1px solid var(--bd);
+  color:var(--ts); width:26px; height:26px; border-radius:4px;
+  cursor:pointer; font-family:inherit;
+}
+.fbd-close:hover { background:var(--sf2); color:var(--tp); }
+
+#frameBackdrop {
+  position:fixed; top:var(--topbar-h,52px); left:0; right:0; bottom:0;
+  background:rgba(0,0,0,.35); z-index:80;
+}
+
+/* ────────────────────────────────────────────────────────
+   MODE: classic — 기본값. 의도적으로 비어있음 (회귀 기준선)
+   ──────────────────────────────────────────────────────── */
+/* (no rules — existing global CSS is the source of truth) */
+
+/* ────────────────────────────────────────────────────────
+   MODE: thevc-frame
+   ──────────────────────────────────────────────────────── */
+body[data-layout-mode="thevc-frame"] #frameProfileHeader,
+body[data-layout-mode="thevc-frame"] #frameTabs         { display: flex; }
+body[data-layout-mode="thevc-frame"] #frameRightPanel,
+body[data-layout-mode="thevc-frame"] #frameQuickRail    { display: flex; }
+
+/* ────────────────────────────────────────────────────────
+   MODE: focus  — frame header + tabs + quick rail만 표시,
+                  right panel 숨김으로 본문 폭 우선
+   ──────────────────────────────────────────────────────── */
+body[data-layout-mode="focus"] #frameProfileHeader,
+body[data-layout-mode="focus"] #frameTabs               { display: flex; }
+body[data-layout-mode="focus"] #frameQuickRail          { display: flex; }
+body[data-layout-mode="focus"] #frameRightPanel         { display: none; }
+
+/* ────────────────────────────────────────────────────────
+   MODE: compact — frame tabs + bottom drawer (작은 화면용)
+   이번 단계에서는 골격만. 본문은 기존대로 유지.
+   ──────────────────────────────────────────────────────── */
+body[data-layout-mode="compact"] #frameTabs             { display: flex; }
+body[data-layout-mode="compact"] #frameBottomDrawer     { display: flex; }
+body[data-layout-mode="compact"] #frameBackdrop.is-on   { display: block; }
+
+/* REVIEWED_FIXED: schedule 계열 화면에서는 본문 폭을 우선하여 우측 패널을 숨긴다. */
+body[data-layout-mode="thevc-frame"][data-frame-route^="schedule"] #frameRightPanel { display:none; }
+

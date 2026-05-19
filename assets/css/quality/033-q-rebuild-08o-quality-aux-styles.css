@@ -1,0 +1,1792 @@
+/* Extracted from ODI_USER_PORTAL_IMPL_Q_REBUILD_08U_TV_STATUS_BOARD_FULLSCREEN_AND_SLIDE_RELAYOUT (3)(2).html :: style block 33 id=q-rebuild-08o-quality-aux-styles :: OPT01 no semantic edits */
+
+/* ============================================================================
+ * Q_REBUILD_08O_QUALITY_AUX_PAGE_PATCH
+ * ----------------------------------------------------------------------------
+ * 품질관리 보조 3개 페이지 (quality-action / quality-images / quality-master)
+ * 보강용 보조 CSS. 새 클래스는 모두 `.o08-*` prefix 사용.
+ * 기존 .qd-* / .card / .btn 전역 무변경.
+ * ============================================================================ */
+
+/* ── shared ── */
+.o08-badge{
+  display:inline-flex; align-items:center; gap:3px;
+  font-size:9px; font-weight:700; letter-spacing:0.3px;
+  padding:2px 7px; border-radius:3px;
+  font-family:'JetBrains Mono','Consolas',monospace;
+}
+.o08-badge.crit  { background:rgba(239,68,68,0.12); color:#fca5a5; border:1px solid rgba(239,68,68,0.30); }
+.o08-badge.major { background:rgba(245,158,11,0.12); color:#fcd34d; border:1px solid rgba(245,158,11,0.30); }
+.o08-badge.ok    { background:rgba(34,197,94,0.12); color:#86efac; border:1px solid rgba(34,197,94,0.30); }
+.o08-badge.info  { background:rgba(34,211,238,0.10); color:#67e8f9; border:1px solid rgba(34,211,238,0.30); }
+.o08-badge.miss  { background:rgba(168,162,158,0.08); color:var(--tm,#8da0c1); border:1px dashed rgba(168,162,158,0.40); }
+.o08-badge.capa  { background:rgba(192,132,252,0.12); color:#d8b4fe; border:1px solid rgba(192,132,252,0.30); }
+
+.o08-note{
+  font-size:10px; color:var(--tm,#8da0c1); line-height:1.55;
+  padding:8px 11px; background:rgba(34,211,238,0.04);
+  border:1px solid rgba(34,211,238,0.22); border-radius:5px;
+  margin-bottom:8px;
+}
+.o08-note strong{ color:var(--ts,#cfd6e4); }
+.o08-note.warn{ background:rgba(245,158,11,0.04); border-color:rgba(245,158,11,0.22); }
+.o08-note.ok{ background:rgba(34,197,94,0.04); border-color:rgba(34,197,94,0.22); }
+
+/* ── §1 quality-action supplement ── */
+.o08-action-panel{
+  padding:12px 14px; margin-bottom:10px;
+  background:rgba(255,255,255,0.02);
+  border:1px solid var(--bd,rgba(168,162,158,0.30));
+  border-radius:8px;
+}
+.o08-action-panel > .h{
+  display:flex; align-items:center; justify-content:space-between;
+  font-size:12px; font-weight:700; color:var(--ts,#cfd6e4);
+  margin-bottom:8px; padding-bottom:6px;
+  border-bottom:1px dashed rgba(168,162,158,0.20);
+}
+/* action candidate table with 담당/기한/상태 */
+.o08-cand-tbl{
+  width:100%; border-collapse:collapse; font-size:10.5px;
+  background:rgba(0,0,0,0.10);
+}
+.o08-cand-tbl th{
+  background:rgba(168,162,158,0.08); color:var(--ts,#cfd6e4);
+  font-size:9px; font-weight:700; padding:5px 8px;
+  text-align:left; border-bottom:1px solid rgba(168,162,158,0.25);
+  letter-spacing:0.3px; text-transform:uppercase;
+  position:sticky; top:0;
+}
+.o08-cand-tbl td{
+  padding:5px 8px; border-bottom:1px solid rgba(168,162,158,0.08);
+  color:var(--tp,#e6ecf5); vertical-align:top;
+}
+.o08-cand-tbl tr:last-child td{ border-bottom:none; }
+.o08-cand-tbl td.mono{ font-family:'JetBrains Mono',monospace; font-size:9.5px; }
+.o08-cand-tbl td.dim { color:var(--tm,#8da0c1); }
+.o08-cand-tbl tr.crit-row{ background:rgba(239,68,68,0.04); }
+.o08-cand-tbl tr.major-row{ background:rgba(245,158,11,0.02); }
+
+/* repeat pattern card */
+.o08-repeat-cards{
+  display:grid; grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); gap:8px;
+}
+.o08-repeat-card{
+  padding:9px 11px;
+  background:rgba(192,132,252,0.04);
+  border:1px solid rgba(192,132,252,0.25); border-radius:6px;
+}
+.o08-repeat-card .rt{ font-size:11px; font-weight:700; color:#d8b4fe; margin-bottom:3px; }
+.o08-repeat-card .rc{ font-size:9.5px; color:var(--tm,#8da0c1); }
+.o08-repeat-card .rv{ font-size:15px; font-weight:800; color:#e879f9; font-family:'JetBrains Mono',monospace; }
+
+/* ── §2 quality-images supplement ── */
+.o08-img-kpi{
+  display:grid; grid-template-columns:repeat(auto-fill,minmax(130px,1fr)); gap:7px;
+  margin-bottom:10px;
+}
+.o08-img-kpi .k{
+  padding:8px 11px; border-radius:6px;
+  background:rgba(255,255,255,0.025);
+  border:1px solid var(--bd,rgba(168,162,158,0.30));
+}
+.o08-img-kpi .k .l{ font-size:9px; color:var(--tm,#8da0c1); text-transform:uppercase; letter-spacing:0.3px; margin-bottom:2px; }
+.o08-img-kpi .k .v{ font-size:17px; font-weight:800; font-family:'JetBrains Mono',monospace; color:var(--ts,#cfd6e4); }
+/* progress bar for image coverage */
+.o08-img-bar{
+  display:flex; height:10px; border-radius:4px; overflow:hidden;
+  background:rgba(168,162,158,0.15); margin:6px 0 3px;
+}
+.o08-img-bar .seg-ok   { background:#22c55e; }
+.o08-img-bar .seg-miss { background:rgba(168,162,158,0.30); }
+
+/* ── §3 quality-master supplement ── */
+.o08-code-stats{
+  display:grid; grid-template-columns:repeat(auto-fill,minmax(140px,1fr)); gap:7px;
+  margin-bottom:10px;
+}
+.o08-code-stats .cs{
+  padding:9px 11px; border-radius:6px;
+  background:rgba(255,255,255,0.025);
+  border:1px solid var(--bd,rgba(168,162,158,0.30));
+}
+.o08-code-stats .cs .l{ font-size:9px; color:var(--tm,#8da0c1); text-transform:uppercase; letter-spacing:0.3px; margin-bottom:2px; }
+.o08-code-stats .cs .v{ font-size:17px; font-weight:800; font-family:'JetBrains Mono',monospace; }
+.o08-code-stats .cs.ok .v{ color:#86efac; }
+.o08-code-stats .cs.warn .v{ color:#fcd34d; }
+.o08-code-stats .cs.info .v{ color:#67e8f9; }
+.o08-code-stats .cs .n{ font-size:9.5px; color:var(--tm,#8da0c1); margin-top:1px; }
+
+.o08-code-tbl{
+  width:100%; border-collapse:collapse; font-size:10.5px;
+  background:rgba(0,0,0,0.10);
+}
+.o08-code-tbl th{
+  background:rgba(168,162,158,0.08); color:var(--ts,#cfd6e4);
+  font-size:9px; font-weight:700; padding:5px 8px;
+  text-align:left; border-bottom:1px solid rgba(168,162,158,0.25);
+  letter-spacing:0.3px; text-transform:uppercase;
+}
+.o08-code-tbl td{
+  padding:5px 8px; border-bottom:1px solid rgba(168,162,158,0.08);
+  color:var(--tp,#e6ecf5);
+}
+.o08-code-tbl tr:last-child td{ border-bottom:none; }
+.o08-code-tbl td.mono{ font-family:'JetBrains Mono',monospace; font-size:9.5px; }
+.o08-code-tbl td.dim { color:var(--tm,#8da0c1); }
+
+/* ============================================================================
+ * Q_REBUILD_08S TV STATUS BOARD CSS START
+ * ----------------------------------------------------------------------------
+ * 독립 CSS namespace: .tv-board-overlay
+ * 기존 페이지 CSS 변수/전역 스타일 영향 없음
+ * 1920×1080 TV 기준 라이트 모드
+ * ========================================================================== */
+
+.tv-board-overlay{
+  /* color tokens */
+  --tv-bg:#f4f7fb; --tv-panel:#ffffff; --tv-panel-soft:#f8fafc;
+  --tv-border:#d8e0ea; --tv-border-soft:#e5ebf3;
+  --tv-text:#0f172a; --tv-sub:#475569; --tv-muted:#94a3b8;
+  --tv-red:#ef4444; --tv-orange:#f59e0b; --tv-yellow:#eab308;
+  --tv-green:#22c55e; --tv-blue:#3b82f6; --tv-cyan:#06b6d4; --tv-gray:#94a3b8;
+  --tv-shadow:0 10px 26px rgba(15,23,42,.08);
+  --tv-shadow-strong:0 18px 40px rgba(15,23,42,.18);
+  /* typography */
+  --tv-title:42px; --tv-section-title:28px; --tv-card-title:20px;
+  --tv-kpi-value:54px; --tv-kpi-label:20px;
+  --tv-chart-label:24px; --tv-chart-value:30px; --tv-delta:20px;
+  --tv-body:20px; --tv-small:16px;
+
+  position:fixed; inset:0; z-index:99999;
+  display:none; background:var(--tv-bg);
+  font-family:'Noto Sans KR','Pretendard',system-ui,-apple-system,sans-serif;
+  color:var(--tv-text);
+  overflow:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+.tv-board-overlay.is-open{display:block;}
+.tv-board-overlay *{box-sizing:border-box;}
+.tv-board-overlay button{font-family:inherit;cursor:pointer;}
+
+.tv-board-shell{
+  position:absolute; inset:0;
+  display:grid; grid-template-rows:auto 1fr auto;
+  width:100%; height:100%;
+}
+
+/* ── HEADER ────────────────────────────────────────────────── */
+.tv-board-header{
+  display:grid; grid-template-columns:1fr auto 1fr; align-items:center;
+  padding:14px 28px; gap:20px;
+  background:var(--tv-panel); border-bottom:1px solid var(--tv-border);
+  box-shadow:var(--tv-shadow);
+}
+.tv-board-brand{display:flex;align-items:center;gap:12px;font-size:24px;font-weight:900;color:var(--tv-text);}
+.tv-board-brand strong{font-weight:900;letter-spacing:-.5px;}
+.tv-board-dot{width:14px;height:14px;border-radius:50%;background:var(--tv-blue);
+  box-shadow:0 0 0 4px rgba(59,130,246,.18);animation:tvDotPulse 2s ease-in-out infinite;}
+@keyframes tvDotPulse{50%{box-shadow:0 0 0 9px rgba(59,130,246,.08);}}
+.tv-board-clock{display:flex;flex-direction:column;align-items:center;gap:2px;line-height:1.1;}
+.tv-board-clock #tvBoardDate{font-size:18px;color:var(--tv-sub);font-weight:700;}
+.tv-board-clock #tvBoardTime{font-size:34px;font-weight:900;color:var(--tv-text);letter-spacing:1px;
+  font-variant-numeric:tabular-nums;}
+.tv-board-actions{display:flex;justify-content:flex-end;gap:8px;flex-wrap:nowrap;}
+.tv-board-actions button{
+  background:var(--tv-panel-soft); color:var(--tv-text);
+  border:1px solid var(--tv-border); border-radius:10px;
+  padding:9px 14px; font-size:15px; font-weight:700;
+  transition:all .15s;
+}
+.tv-board-actions button:hover{background:#eef3fa;border-color:#bfd1e8;}
+.tv-board-actions button:active{transform:translateY(1px);}
+
+/* ── STAGE ────────────────────────────────────────────────── */
+.tv-board-stage{
+  position:relative; overflow:hidden;
+  background:var(--tv-bg);
+  padding:22px 28px;
+}
+.tv-slide{
+  position:absolute; inset:22px 28px;
+  opacity:0; transform:translateX(28px) scale(.985);
+  transition:opacity .55s ease, transform .55s ease;
+  pointer-events:none;
+  display:flex; flex-direction:column; gap:18px;
+}
+.tv-slide.is-active{opacity:1;transform:none;pointer-events:auto;}
+
+.tv-slide-title{
+  display:flex; align-items:center; gap:14px;
+  font-size:var(--tv-title); font-weight:900;
+  color:var(--tv-text); letter-spacing:-1px;
+  padding:4px 4px 6px;
+  flex:0 0 auto;
+}
+.tv-slide-title .tv-emoji{font-size:42px;line-height:1;}
+.tv-slide-title .tv-sub-label{
+  margin-left:auto; font-size:20px; font-weight:700; color:var(--tv-sub);
+  padding:6px 14px; background:var(--tv-panel); border:1px solid var(--tv-border);
+  border-radius:999px;
+}
+.tv-slide-title .tv-mid-badge{
+  font-size:16px;font-weight:800;padding:5px 12px;border-radius:999px;
+  background:rgba(234,179,8,.18); color:#a16207; border:1px solid rgba(234,179,8,.4);
+}
+
+/* ── PANELS ────────────────────────────────────────────────── */
+.tv-panel{
+  background:var(--tv-panel); border:1px solid var(--tv-border);
+  border-radius:18px; box-shadow:var(--tv-shadow);
+  padding:18px 20px; display:flex; flex-direction:column; gap:12px;
+  min-height:0;
+}
+.tv-panel .tv-panel-title{
+  display:flex; align-items:center; gap:8px;
+  font-size:var(--tv-card-title); font-weight:800; color:var(--tv-text);
+}
+.tv-panel .tv-panel-title .pill{
+  font-size:13px; font-weight:700; padding:3px 10px; border-radius:999px;
+  background:var(--tv-panel-soft); color:var(--tv-sub); border:1px solid var(--tv-border);
+}
+
+/* ── KPI CARDS ────────────────────────────────────────────── */
+.tv-kpi-grid{display:grid;gap:14px;}
+.tv-kpi-grid.cols-6{grid-template-columns:repeat(6,1fr);}
+.tv-kpi-grid.cols-4{grid-template-columns:repeat(4,1fr);}
+.tv-kpi-grid.cols-3{grid-template-columns:repeat(3,1fr);}
+.tv-kpi-card{
+  background:var(--tv-panel); border:1px solid var(--tv-border);
+  border-radius:16px; padding:18px 20px;
+  box-shadow:var(--tv-shadow);
+  display:flex; flex-direction:column; gap:6px;
+  position:relative; overflow:hidden;
+  min-height:130px;
+}
+.tv-kpi-card::before{
+  content:''; position:absolute; left:0; top:0; bottom:0; width:6px;
+  background:var(--tv-blue);
+}
+.tv-kpi-card.red::before{background:var(--tv-red);}
+.tv-kpi-card.orange::before{background:var(--tv-orange);}
+.tv-kpi-card.green::before{background:var(--tv-green);}
+.tv-kpi-card.gray::before{background:var(--tv-gray);}
+.tv-kpi-card.blue::before{background:var(--tv-blue);}
+.tv-kpi-card.cyan::before{background:var(--tv-cyan);}
+.tv-kpi-label{font-size:var(--tv-kpi-label);font-weight:700;color:var(--tv-sub);
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+.tv-kpi-value{font-size:var(--tv-kpi-value);font-weight:900;color:var(--tv-text);
+  line-height:1.05; letter-spacing:-1.5px; font-variant-numeric:tabular-nums;}
+.tv-kpi-value .unit{font-size:24px;font-weight:700;color:var(--tv-sub);margin-left:4px;}
+.tv-kpi-delta{font-size:var(--tv-delta);font-weight:800;display:inline-flex;align-items:center;gap:4px;}
+.tv-kpi-delta.up{color:var(--tv-red);}
+.tv-kpi-delta.down{color:var(--tv-green);}
+.tv-kpi-delta.flat{color:var(--tv-muted);}
+.tv-kpi-sub{font-size:15px;color:var(--tv-muted);font-weight:600;}
+
+/* ── BAR ROWS (no SVG label overlap) ─────────────────────── */
+.tv-bar-list{display:flex;flex-direction:column;gap:10px;}
+.tv-bar-row{
+  display:grid; grid-template-columns:240px 1fr 100px 120px;
+  align-items:center; gap:16px; min-height:56px;
+  padding:4px 6px;
+}
+.tv-bar-name{
+  font-size:24px; font-weight:800; color:var(--tv-text);
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+.tv-bar-track{
+  height:30px; border-radius:999px; background:#e8edf4;
+  overflow:hidden; position:relative;
+}
+.tv-bar-track i{
+  display:block; height:100%; border-radius:999px;
+  transition:width .8s cubic-bezier(.22,.61,.36,1);
+}
+.tv-bar-value{
+  font-size:28px; font-weight:900; text-align:right; color:var(--tv-text);
+  font-variant-numeric:tabular-nums;
+}
+.tv-bar-value .unit{font-size:18px;color:var(--tv-sub);font-weight:700;margin-left:2px;}
+.tv-delta{font-size:18px;font-weight:800;text-align:right;font-variant-numeric:tabular-nums;}
+.tv-delta.up{color:var(--tv-red);}
+.tv-delta.down{color:var(--tv-green);}
+.tv-delta.flat{color:var(--tv-muted);}
+
+/* ── DONUT ──────────────────────────────────────────────── */
+.tv-donut-wrap{display:grid;grid-template-columns:1fr 1.05fr;gap:18px;align-items:center;min-height:340px;}
+.tv-donut-svg{width:100%;max-width:340px;height:340px;display:block;margin:0 auto;}
+.tv-donut-center{
+  pointer-events:none;
+  font-weight:900;
+}
+.tv-donut-legend{display:flex;flex-direction:column;gap:10px;}
+.tv-donut-legend-row{
+  display:grid; grid-template-columns:18px 110px 1fr 90px;
+  align-items:center; gap:12px;
+  padding:8px 4px;
+}
+.tv-donut-legend-row .sw{
+  width:16px; height:16px; border-radius:4px;
+}
+.tv-donut-legend-row .nm{font-size:22px;font-weight:800;color:var(--tv-text);}
+.tv-donut-legend-row .bar{
+  height:14px; background:#eef2f8; border-radius:999px; overflow:hidden;
+}
+.tv-donut-legend-row .bar i{display:block;height:100%;border-radius:999px;}
+.tv-donut-legend-row .vl{font-size:22px;font-weight:900;text-align:right;font-variant-numeric:tabular-nums;}
+
+/* ── LINE CHART (SVG, no inline long labels) ─────────────── */
+.tv-line-wrap{display:flex;flex-direction:column;gap:8px;min-height:360px;flex:1;}
+.tv-line-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+.tv-line-legend{display:flex;gap:14px;align-items:center;flex-wrap:wrap;}
+.tv-line-legend-item{display:flex;align-items:center;gap:6px;font-size:18px;font-weight:700;color:var(--tv-sub);}
+.tv-line-legend-item .ln{width:22px;height:3px;border-radius:2px;}
+.tv-line-legend-item .ln.dashed{background:repeating-linear-gradient(90deg,currentColor 0 6px,transparent 6px 10px);}
+.tv-line-svg{width:100%;height:340px;display:block;}
+.tv-line-axis{font-size:16px;fill:var(--tv-muted);font-weight:600;font-family:inherit;}
+.tv-line-grid{stroke:#e6ecf3;stroke-width:1;}
+.tv-line-point-label{font-size:18px;font-weight:800;fill:var(--tv-text);font-family:inherit;}
+
+/* ── PRODUCT CARDS (slide 3) ─────────────────────────────── */
+.tv-prod-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;flex:1;min-height:0;}
+.tv-prod-card{
+  background:var(--tv-panel); border:1px solid var(--tv-border);
+  border-radius:16px; padding:16px 18px; box-shadow:var(--tv-shadow);
+  display:flex; flex-direction:column; gap:8px; min-height:160px; position:relative;
+  border-left:8px solid var(--tv-blue);
+}
+.tv-prod-card.is-inspect{border-left-color:var(--tv-orange);}
+.tv-prod-card.is-ship{border-left-color:var(--tv-green);}
+.tv-prod-card.is-delay{border-left-color:var(--tv-red);background:#fff5f5;}
+.tv-prod-card .hg{font-size:28px;font-weight:900;color:var(--tv-text);letter-spacing:-.5px;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.tv-prod-card .mdl{font-size:21px;font-weight:700;color:var(--tv-sub);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.tv-prod-card .meta{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:auto;}
+.tv-prod-card .badge{
+  font-size:18px;font-weight:800;padding:5px 12px;border-radius:999px;
+  background:rgba(59,130,246,.13);color:#1d4ed8;border:1px solid rgba(59,130,246,.3);
+}
+.tv-prod-card.is-inspect .badge{background:rgba(245,158,11,.15);color:#b45309;border-color:rgba(245,158,11,.35);}
+.tv-prod-card.is-ship .badge{background:rgba(34,197,94,.15);color:#15803d;border-color:rgba(34,197,94,.35);}
+.tv-prod-card.is-delay .badge{background:rgba(239,68,68,.15);color:#b91c1c;border-color:rgba(239,68,68,.35);}
+.tv-prod-card .date{font-size:18px;font-weight:700;color:var(--tv-sub);font-variant-numeric:tabular-nums;}
+
+/* ── EMPTY STATE ─────────────────────────────────────────── */
+.tv-empty{
+  flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  background:var(--tv-panel);border:1px dashed var(--tv-border);border-radius:18px;
+  color:var(--tv-sub);gap:10px;padding:40px;
+}
+.tv-empty .emoji{font-size:64px;}
+.tv-empty .ttl{font-size:28px;font-weight:800;color:var(--tv-text);}
+.tv-empty .sub{font-size:18px;color:var(--tv-sub);}
+
+/* ── CALENDAR (slide 11) ────────────────────────────────── */
+.tv-cal-wrap{display:flex;flex-direction:column;gap:10px;flex:1;min-height:0;}
+.tv-calendar-month-title{
+  font-size:36px;font-weight:900;color:var(--tv-text);text-align:center;
+  padding:6px 0; letter-spacing:-1px;
+}
+.tv-cal-legend{display:flex;justify-content:center;gap:18px;flex-wrap:wrap;
+  font-size:16px;font-weight:700;color:var(--tv-sub);padding-bottom:4px;}
+.tv-cal-legend .it{display:flex;align-items:center;gap:6px;}
+.tv-cal-legend .sw{width:14px;height:14px;border-radius:4px;}
+.tv-cal-grid{
+  flex:1;display:grid;grid-template-rows:auto 1fr;gap:0;
+  background:var(--tv-panel);border:1px solid var(--tv-border);
+  border-radius:14px;overflow:hidden;box-shadow:var(--tv-shadow);min-height:0;
+}
+.tv-cal-week-header{display:grid;grid-template-columns:repeat(7,1fr);background:var(--tv-panel-soft);border-bottom:1px solid var(--tv-border);}
+.tv-cal-week-header .wd{padding:8px 10px;font-size:18px;font-weight:800;text-align:center;color:var(--tv-sub);}
+.tv-cal-week-header .wd.sat{color:var(--tv-orange);}
+.tv-cal-week-header .wd.sun{color:var(--tv-red);}
+.tv-cal-body{display:grid;grid-template-columns:repeat(7,1fr);grid-auto-rows:1fr;min-height:0;}
+.tv-cal-cell{
+  border-right:1px solid var(--tv-border-soft);border-top:1px solid var(--tv-border-soft);
+  padding:6px 8px;display:flex;flex-direction:column;gap:3px;
+  min-width:0;min-height:0;overflow:hidden;background:#fff;
+}
+.tv-cal-cell.is-out{background:#f7f9fc;color:var(--tv-muted);}
+.tv-cal-cell.is-today{background:#eef5ff;}
+.tv-cal-cell:nth-child(7n){border-right:none;}
+.tv-cal-cell .dn{
+  font-size:22px;font-weight:900;color:var(--tv-text);line-height:1;
+  display:flex;align-items:center;gap:6px;
+}
+.tv-cal-cell .dn .hol{font-size:13px;font-weight:700;color:var(--tv-red);}
+.tv-cal-cell.is-sat .dn{color:var(--tv-orange);}
+.tv-cal-cell.is-sun .dn,.tv-cal-cell.is-hol .dn{color:var(--tv-red);}
+.tv-cal-chip{
+  font-size:14px;font-weight:700;line-height:1.15;
+  padding:3px 7px;border-radius:6px;color:#fff;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.tv-cal-chip.t-ship{background:var(--tv-green);}
+.tv-cal-chip.t-inspect{background:var(--tv-orange);}
+.tv-cal-chip.t-work{background:var(--tv-blue);}
+.tv-cal-chip.t-delay{background:var(--tv-red);}
+.tv-cal-more{font-size:13px;font-weight:800;color:var(--tv-sub);padding:0 2px;}
+
+/* ── TOON SLIDE (image-first, no overlay) ────────────────── */
+.tv-toon-slide{
+  position:absolute; inset:0;
+  display:flex;align-items:center;justify-content:center;
+  padding:12px 20px;
+  background:#000;
+  opacity:0; transform:translateX(28px); pointer-events:none;
+  transition:opacity .55s ease, transform .55s ease;
+}
+.tv-toon-slide.is-active{opacity:1;transform:none;pointer-events:auto;}
+.tv-toon-frame{
+  width:min(96vw, calc((100vh - 120px) * 1.7778));
+  height:min(calc(100vh - 135px), calc(96vw / 1.7778));
+  display:flex;align-items:center;justify-content:center;
+  background:transparent;border:0;box-shadow:none;overflow:visible;
+}
+.tv-toon-img{
+  width:100%;height:100%;
+  object-fit:contain;object-position:center center;
+  display:block;border-radius:16px;
+}
+
+/* ── FOOTER ──────────────────────────────────────────────── */
+.tv-board-footer{
+  display:grid; grid-template-columns:auto 1fr auto auto;
+  align-items:center; gap:18px;
+  padding:10px 28px;
+  background:var(--tv-panel); border-top:1px solid var(--tv-border);
+  box-shadow:0 -8px 20px rgba(15,23,42,.04);
+}
+#tvBoardSlideLabel{font-size:18px;font-weight:800;color:var(--tv-text);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:38vw;}
+.tv-board-dots{display:flex;gap:6px;justify-content:center;}
+.tv-board-dots .d{
+  width:10px;height:10px;border-radius:50%;background:#d8e0ea;cursor:pointer;
+  transition:transform .2s,background .2s;
+}
+.tv-board-dots .d.is-active{background:var(--tv-blue);transform:scale(1.4);}
+.tv-progress{
+  width:240px;height:8px;background:#e6ecf3;border-radius:999px;overflow:hidden;
+}
+.tv-progress i{
+  display:block;height:100%;background:linear-gradient(90deg,var(--tv-blue),var(--tv-cyan));
+  width:0%;border-radius:999px;transition:none;
+}
+.tv-data-badge{
+  font-size:14px;font-weight:700;padding:6px 12px;border-radius:999px;
+  background:var(--tv-panel-soft);border:1px solid var(--tv-border);color:var(--tv-sub);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:32vw;
+}
+.tv-data-badge.has-err{background:#fff1f0;border-color:rgba(239,68,68,.35);color:#b91c1c;}
+
+/* ── SLIDE 1 layout (KPI dashboard) ──────────────────────── */
+.tv-dash-grid{
+  display:grid; gap:14px; flex:1; min-height:0;
+  grid-template-rows:auto 1.05fr 1fr;
+}
+.tv-dash-mid{display:grid;grid-template-columns:1.35fr 1fr;gap:14px;min-height:0;}
+.tv-dash-bot{display:grid;grid-template-columns:1fr 1.4fr;gap:14px;min-height:0;}
+
+/* ── SLIDE 5 layout (quality overview) ──────────────────── */
+.tv-q-grid{
+  display:grid; gap:14px; flex:1; min-height:0;
+  grid-template-rows:auto 1fr auto;
+}
+.tv-q-mid{display:grid;grid-template-columns:1.4fr 1fr;gap:14px;min-height:0;}
+.tv-warn-row{
+  display:flex;gap:14px;
+}
+.tv-warn-card{
+  flex:1;background:var(--tv-panel);border:1px solid var(--tv-border);
+  border-radius:14px;padding:12px 18px;display:flex;align-items:center;gap:12px;
+  box-shadow:var(--tv-shadow);
+}
+.tv-warn-card .em{font-size:30px;}
+.tv-warn-card .tx{font-size:20px;font-weight:800;color:var(--tv-text);}
+.tv-warn-card.crit{background:#fff5f5;border-color:rgba(239,68,68,.35);}
+.tv-warn-card.crit .tx{color:#b91c1c;}
+.tv-warn-card.warn{background:#fffbeb;border-color:rgba(245,158,11,.35);}
+.tv-warn-card.warn .tx{color:#b45309;}
+.tv-warn-card.ok{background:#f0fdf4;border-color:rgba(34,197,94,.35);}
+.tv-warn-card.ok .tx{color:#15803d;}
+
+/* ── SLIDE 7/8/9 layouts ─────────────────────────────────── */
+.tv-trend-grid{display:grid;grid-template-rows:1fr auto;gap:14px;flex:1;min-height:0;}
+.tv-sev-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:14px;flex:1;min-height:0;}
+.tv-cat-grid{display:flex;flex-direction:column;gap:14px;flex:1;min-height:0;}
+.tv-cat-other{
+  background:var(--tv-panel-soft);border:1px dashed var(--tv-border);
+  border-radius:12px;padding:10px 16px;display:flex;align-items:center;gap:12px;
+  font-size:16px;color:var(--tv-sub);font-weight:700;
+}
+
+/* ── COMPARE TABLE (slide 8) ─────────────────────────────── */
+.tv-cmp-table{
+  display:grid;grid-template-columns:1fr auto auto auto;
+  gap:0;background:var(--tv-panel);border-radius:12px;overflow:hidden;
+  border:1px solid var(--tv-border);
+}
+.tv-cmp-table .h{
+  font-size:18px;font-weight:800;color:var(--tv-sub);padding:12px 16px;
+  background:var(--tv-panel-soft);border-bottom:1px solid var(--tv-border);
+  text-align:right;
+}
+.tv-cmp-table .h.first{text-align:left;}
+.tv-cmp-table .c{
+  font-size:24px;font-weight:800;padding:14px 16px;text-align:right;
+  border-bottom:1px solid var(--tv-border-soft);font-variant-numeric:tabular-nums;
+}
+.tv-cmp-table .c.first{text-align:left;display:flex;align-items:center;gap:10px;}
+.tv-cmp-table .c.first .sw{width:14px;height:14px;border-radius:4px;}
+.tv-cmp-table .row-last .c{border-bottom:none;}
+
+/* ── 1080p TV optimization ───────────────────────────────── */
+@media (min-width:1700px){
+  .tv-board-overlay{--tv-title:44px;--tv-kpi-value:58px;}
+}
+@media (max-width:1400px){
+  .tv-board-overlay{
+    --tv-title:34px;--tv-section-title:24px;--tv-card-title:18px;
+    --tv-kpi-value:44px;--tv-kpi-label:17px;
+    --tv-chart-label:20px;--tv-chart-value:24px;
+  }
+  .tv-bar-row{grid-template-columns:200px 1fr 88px 100px;}
+  .tv-prod-grid{grid-template-columns:repeat(3,1fr);}
+}
+
+/* ============================================================================
+ * Q_REBUILD_08T LAYOUT/DATA POLISH CSS PATCH
+ * ----------------------------------------------------------------------------
+ *  §2  달력 슬라이드 head 정리
+ *  §4  월별 불량추이 차트 비율/legend 보정
+ *  §6  KPI 슬라이드 65/35 grid, 차트 가림 제거
+ *  §7  현재 작업중 진단 배지
+ *  §9  bar row grid 통일
+ *  §10 도넛 legend 간격
+ *  §11 footer height 고정
+ * ========================================================================== */
+
+/* ── §11. footer height 고정 + stage 높이 calc ───────────────────── */
+.tv-board-overlay { --tv-footer-h: 46px; --tv-header-h: 76px; }
+.tv-board-overlay .tv-board-stage{
+  height: calc(100vh - var(--tv-header-h) - var(--tv-footer-h));
+  overflow: hidden;
+}
+.tv-board-overlay .tv-board-footer{
+  height: 46px;
+  flex-shrink: 0;
+}
+.tv-board-overlay .tv-slide{
+  height:100%;
+  overflow:hidden;
+}
+
+/* ── §6. KPI 슬라이드 새 grid (08T) ────────────────────────────── */
+.tv-board-overlay .tv-dash-grid-08t{
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  height:100%;
+  min-height:0;
+}
+.tv-board-overlay .tv-kpi-main-grid{
+  display:grid;
+  grid-template-columns: 65% 35%;
+  gap:14px;
+  flex:1.4;
+  min-height:0;
+}
+.tv-board-overlay .tv-kpi-trend-panel{
+  display:flex;
+  flex-direction:column;
+  min-height:360px;
+}
+.tv-board-overlay .tv-kpi-trend-area{
+  flex:1;
+  min-height:300px;
+  display:flex;
+  align-items:stretch;
+}
+.tv-board-overlay .tv-kpi-trend-area .tv-line-svg{
+  width:100%;
+  height:100%;
+  display:block;
+}
+.tv-board-overlay .tv-kpi-compare-panel{
+  display:flex;
+  flex-direction:column;
+}
+.tv-board-overlay .tv-compare-block{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  padding:12px 10px;
+  flex:1;
+  justify-content:center;
+}
+.tv-board-overlay .tv-compare-row{
+  display:grid;
+  grid-template-columns: 1fr auto;
+  align-items:center;
+  padding:14px 16px;
+  background:#f8fafc;
+  border:1px solid var(--tv-border-soft);
+  border-radius:12px;
+  gap:14px;
+}
+.tv-board-overlay .tv-compare-row .lbl{
+  font-size:18px;
+  font-weight:700;
+  color:#475569;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.tv-board-overlay .tv-compare-row .val{
+  font-size:32px;
+  font-weight:900;
+  color:#0f172a;
+  white-space:nowrap;
+}
+.tv-board-overlay .tv-compare-row .val .u{
+  font-size:16px;
+  color:#64748b;
+  font-weight:700;
+  margin-left:4px;
+}
+.tv-board-overlay .tv-compare-delta.up   .val{ color:#ef4444; }
+.tv-board-overlay .tv-compare-delta.down .val{ color:#22c55e; }
+.tv-board-overlay .tv-compare-delta.flat .val{ color:#64748b; }
+.tv-board-overlay .tv-kpi-bottom-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+  flex:1;
+  min-height:0;
+  max-height:240px;
+}
+.tv-board-overlay .tv-kpi-bot-list{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  flex:1;
+  min-height:0;
+  overflow:hidden;
+}
+
+/* ── §4. 월별 불량추이 차트 카드 (08T) ───────────────────────── */
+.tv-board-overlay .tv-monthly-chart-card{
+  display:flex;
+  flex-direction:column;
+  flex:1;
+  min-height:480px;
+  padding:18px 22px;
+  gap:14px;
+}
+.tv-board-overlay .tv-monthly-chart-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+  flex-wrap:wrap;
+}
+.tv-board-overlay .tv-monthly-chart-subtitle{
+  font-size:22px;
+  font-weight:800;
+  color:#0f172a;
+}
+.tv-board-overlay .tv-chart-legend{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px 18px;
+  align-items:center;
+  font-size:18px;
+  font-weight:700;
+}
+.tv-board-overlay .tv-chart-legend-item{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  min-width:0;
+  white-space:nowrap;
+}
+.tv-board-overlay .tv-chart-legend-item .sw{
+  display:inline-block;
+  width:22px;
+  height:6px;
+  border-radius:3px;
+}
+.tv-board-overlay .tv-chart-legend-item .sw.dashed{
+  background:repeating-linear-gradient(to right,#22c55e 0 6px,transparent 6px 12px) !important;
+}
+.tv-board-overlay .tv-chart-legend-item .sw.dot{
+  width:14px;height:14px;border-radius:50%;
+}
+.tv-board-overlay .tv-monthly-chart-area{
+  flex:1;
+  min-height:360px;
+  position:relative;
+  display:flex;
+}
+.tv-board-overlay .tv-monthly-chart-area .tv-line-svg{
+  width:100%;
+  height:100%;
+  display:block;
+}
+.tv-board-overlay .tv-monthly-chart-foot{
+  display:flex;
+  justify-content:flex-end;
+  margin-top:4px;
+}
+.tv-board-overlay .tv-monthly-chart-foot .tv-mid-badge{
+  font-size:16px;
+  font-weight:800;
+  color:#b45309;
+  background:#fef3c7;
+  border:1px solid #fcd34d;
+  padding:6px 12px;
+  border-radius:999px;
+}
+.tv-board-overlay .tv-monthly-kpis{
+  flex-shrink:0;
+}
+
+/* SVG 내부 데이터 라벨 — 흰색 stroke로 가독성 강화 (점·선 위에서도 읽힘) */
+.tv-board-overlay .tv-chart-point-label{
+  font-size:20px;
+  font-weight:900;
+  paint-order:stroke;
+  stroke:#ffffff;
+  stroke-width:4px;
+  font-variant-numeric:tabular-nums;
+}
+.tv-board-overlay .tv-line-axis{
+  font-size:16px;
+  font-weight:700;
+  fill:#64748b;
+}
+
+/* ── §2/§3. 달력 슬라이드 head 정리 ───────────────────────────── */
+.tv-board-overlay .tv-cal-wrap-08t{
+  display:flex;
+  flex-direction:column;
+  height:100%;
+  padding:14px 22px 18px;
+  gap:10px;
+}
+.tv-board-overlay .tv-calendar-page-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+  flex-wrap:wrap;
+  flex-shrink:0;
+}
+.tv-board-overlay .tv-cal-wrap-08t .tv-calendar-month-title{
+  font-size:48px;
+  font-weight:900;
+  color:#0f172a;
+  letter-spacing:-0.5px;
+  line-height:1.1;
+  margin:0;
+  padding:0;
+}
+.tv-board-overlay .tv-cal-wrap-08t .tv-cal-grid{
+  flex:1;
+  min-height:0;
+  display:flex;
+  flex-direction:column;
+}
+.tv-board-overlay .tv-cal-wrap-08t .tv-cal-body{
+  flex:1;
+  min-height:0;
+}
+/* 토요일 주황 / 일요일·공휴일 빨강 */
+.tv-board-overlay .tv-cal-week-header .wd.sat,
+.tv-board-overlay .tv-cal-cell.is-sat .dn{
+  color:#f59e0b !important;
+}
+.tv-board-overlay .tv-cal-week-header .wd.sun,
+.tv-board-overlay .tv-cal-cell.is-sun .dn,
+.tv-board-overlay .tv-cal-cell.is-hol .dn{
+  color:#ef4444 !important;
+}
+.tv-board-overlay .tv-cal-cell.is-hol{
+  background:#fff1f2 !important;
+  border-color:#fecdd3 !important;
+}
+
+/* ── §7. 현재 작업중 진단 배지 ───────────────────────────────── */
+.tv-board-overlay .tv-prod-diagnostic{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px 14px;
+  margin-top:12px;
+  padding:10px 14px;
+  background:#f8fafc;
+  border:1px solid var(--tv-border-soft);
+  border-radius:10px;
+  flex-shrink:0;
+}
+.tv-board-overlay .tv-diag-item{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  font-size:15px;
+  font-weight:700;
+  color:#475569;
+  white-space:nowrap;
+}
+.tv-board-overlay .tv-diag-item .k{
+  color:#94a3b8;
+  font-weight:600;
+}
+.tv-board-overlay .tv-diag-item .v{
+  color:#0f172a;
+  font-variant-numeric:tabular-nums;
+  background:#fff;
+  padding:2px 8px;
+  border-radius:6px;
+  border:1px solid var(--tv-border-soft);
+}
+.tv-board-overlay .tv-empty-prod{
+  background:#f8fafc;
+  border-radius:14px;
+  margin-top:10px;
+}
+
+/* ── §9. bar row 통일 (긴 한글 라벨 ellipsis) ─────────────────── */
+.tv-board-overlay .tv-bar-row{
+  display:grid;
+  grid-template-columns: minmax(180px, 240px) 1fr 80px 100px;
+  align-items:center;
+  gap:14px;
+  min-height:46px;
+}
+.tv-board-overlay .tv-bar-row .tv-bar-name{
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  min-width:0;
+}
+.tv-board-overlay .tv-bar-row .tv-bar-value{
+  font-variant-numeric:tabular-nums;
+  text-align:right;
+  white-space:nowrap;
+}
+.tv-board-overlay .tv-bar-row .tv-delta{
+  text-align:right;
+  white-space:nowrap;
+}
+
+/* ── §10. 도넛 legend 간격 보정 (도넛-legend 겹침 방지) ────────── */
+.tv-board-overlay .tv-donut-wrap,
+.tv-board-overlay .tv-donut-card{
+  display:flex;
+  align-items:center;
+  gap:24px;
+  flex-wrap:wrap;
+}
+.tv-board-overlay .tv-donut-legend{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:6px;
+  min-width:160px;
+}
+
+/* Q_REBUILD_08T LAYOUT/DATA POLISH CSS PATCH END */
+
+
+/* ============================================================================
+ * Q_REBUILD_08U FULLSCREEN AND SLIDE RELAYOUT CSS PATCH
+ * ----------------------------------------------------------------------------
+ *  §2  전체화면 overlay/shell/stage 강제
+ *  §5  KPI 슬라이드 3단 grid (96px / 1fr / 210px)
+ *  §6  KPI 카드 inline 전월 대비
+ *  §7  최근 6개월 추이 라벨
+ *  §8  하단 카드 잘림 방지
+ *  §9  Top5 overflow 해결
+ *  §10 품질 페이지 grid
+ *  §11 월별 페이지 grid
+ *  §13 달력 페이지 grid
+ *  §14 footer/stage 높이 분리
+ *  +quality-focus 슬라이드 CSS
+ * ========================================================================== */
+
+/* ── §2/§14. 전체화면 강제 overlay/shell/stage ──────────────────── */
+#odiTvStatusBoard.tv-board-overlay,
+.tv-board-overlay {
+  position:fixed !important;
+  inset:0 !important;
+  top:0 !important; left:0 !important; right:0 !important; bottom:0 !important;
+  width:100vw !important;
+  height:100vh !important;
+  height:100dvh !important;
+  max-width:none !important;
+  max-height:none !important;
+  margin:0 !important;
+  padding:0 !important;
+  z-index:999999 !important;
+  overflow:hidden !important;
+  box-sizing:border-box !important;
+}
+.tv-board-overlay .tv-board-shell {
+  --tv-header-h: 58px;
+  --tv-footer-h: 42px;
+  position:absolute !important;
+  inset:0 !important;
+  width:100% !important;
+  height:100% !important;
+  max-width:none !important;
+  max-height:none !important;
+  margin:0 !important;
+  border-radius:0 !important;
+  border:0 !important;
+  display:grid !important;
+  grid-template-rows: var(--tv-header-h) minmax(0,1fr) var(--tv-footer-h) !important;
+  overflow:hidden !important;
+  box-sizing:border-box !important;
+}
+.tv-board-overlay .tv-board-header {
+  height: var(--tv-header-h) !important;
+  min-height: var(--tv-header-h) !important;
+  flex-shrink:0 !important;
+}
+.tv-board-overlay .tv-board-footer {
+  height: var(--tv-footer-h) !important;
+  min-height: var(--tv-footer-h) !important;
+  flex-shrink:0 !important;
+  overflow:hidden !important;
+}
+.tv-board-overlay .tv-board-stage {
+  width:100% !important;
+  height:100% !important;
+  min-height:0 !important;
+  overflow:hidden !important;
+}
+.tv-board-overlay .tv-slide {
+  width:100% !important;
+  height:100% !important;
+  min-height:0 !important;
+  overflow:hidden !important;
+  box-sizing:border-box !important;
+  /* §FIX(08U-after): inset:22px 28px(기존 base) + width/height:100% 충돌 제거.
+     inset을 0으로 강제해서 stage 전체를 정확히 채우고, 내부 padding은 0으로
+     리셋 — 각 page wrap이 자체 padding을 가짐 */
+  position:absolute !important;
+  inset:0 !important;
+  top:0 !important; left:0 !important; right:0 !important; bottom:0 !important;
+  margin:0 !important;
+  padding:0 !important;
+  gap:0 !important;
+  display:flex !important;
+  flex-direction:column !important;
+}
+/* §FIX: .tv-slide 안의 page wrap들이 부모 flex container의 height 100%를
+   정확히 채우도록 flex:1 + min-height:0 강제. (height:100%만으로는 flex item
+   에서 작동 안 함) */
+.tv-board-overlay .tv-slide > .tv-kpi-page,
+.tv-board-overlay .tv-slide > .tv-focus-page,
+.tv-board-overlay .tv-slide > .tv-quality-page,
+.tv-board-overlay .tv-slide > .tv-monthly-page,
+.tv-board-overlay .tv-slide > .tv-calendar-page {
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+  width: 100% !important;
+  max-height: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* §FIX: page 안에 들어간 slide-title 컴팩트화 (기존 base 42px → 26px)
+   focus/quality/monthly 슬라이드에서 grid 첫 row가 title로 너무 많이
+   차지하지 않도록 */
+.tv-board-overlay .tv-focus-page > .tv-slide-title,
+.tv-board-overlay .tv-quality-page > .tv-slide-title,
+.tv-board-overlay .tv-monthly-page > .tv-slide-title {
+  font-size:26px !important;
+  font-weight:900 !important;
+  letter-spacing:-0.5px;
+  padding:0 4px 2px !important;
+  margin:0 !important;
+  flex-shrink:0;
+  line-height:1.1;
+}
+.tv-board-overlay .tv-focus-page > .tv-slide-title .tv-emoji,
+.tv-board-overlay .tv-quality-page > .tv-slide-title .tv-emoji,
+.tv-board-overlay .tv-monthly-page > .tv-slide-title .tv-emoji {
+  font-size:30px !important;
+}
+.tv-board-overlay .tv-focus-page > .tv-slide-title .tv-sub-label,
+.tv-board-overlay .tv-quality-page > .tv-slide-title .tv-sub-label,
+.tv-board-overlay .tv-monthly-page > .tv-slide-title .tv-sub-label {
+  font-size:14px !important;
+  padding:4px 10px !important;
+}
+/* body lock — 현황판 열림 시 배경 스크롤/노출 차단 */
+body.odi-tv-board-open,
+body.tv-board-open {
+  overflow:hidden !important;
+}
+
+/* ── §5/§6. KPI 슬라이드 3단 grid (96px / 1fr / 210px) ──────────── */
+.tv-board-overlay .tv-kpi-page {
+  height:100%;
+  display:grid;
+  grid-template-rows: 96px minmax(300px, 1fr) 210px;
+  gap:12px;
+  overflow:hidden;
+  padding:14px 18px;
+  box-sizing:border-box;
+}
+.tv-board-overlay .tv-kpi-cards {
+  display:grid;
+  grid-template-columns:repeat(5, 1fr);
+  gap:10px;
+  min-height:0;
+}
+/* compact KPI card (08U) */
+.tv-board-overlay .tv-kpi-card-c {
+  min-height:0;
+  height:96px;
+  padding:10px 14px;
+  border-radius:14px;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  gap:6px;
+  background:#fff;
+  border:1px solid var(--tv-border-soft);
+}
+.tv-board-overlay .tv-kpi-card-c.blue   { background:#eff6ff; border-color:#bfdbfe; }
+.tv-board-overlay .tv-kpi-card-c.red    { background:#fef2f2; border-color:#fecaca; }
+.tv-board-overlay .tv-kpi-card-c.orange { background:#fff7ed; border-color:#fed7aa; }
+.tv-board-overlay .tv-kpi-card-c.green  { background:#f0fdf4; border-color:#bbf7d0; }
+.tv-board-overlay .tv-kpi-card-c.gray   { background:#f8fafc; border-color:#e2e8f0; }
+.tv-board-overlay .tv-kpi-card-c.cyan   { background:#ecfeff; border-color:#a5f3fc; }
+.tv-board-overlay .tv-kpi-card-c .tv-kpi-label {
+  font-size:15px;
+  font-weight:700;
+  color:#475569;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  display:flex;
+  align-items:center;
+  gap:6px;
+  line-height:1.1;
+}
+.tv-board-overlay .tv-kpi-card-c .tv-kpi-value {
+  font-size:34px;
+  line-height:1;
+  font-weight:900;
+  color:#0f172a;
+  font-variant-numeric:tabular-nums;
+  white-space:nowrap;
+}
+.tv-board-overlay .tv-kpi-card-c .tv-kpi-value .u,
+.tv-board-overlay .tv-kpi-card-c .tv-kpi-inline strong .u {
+  font-size:15px;
+  font-weight:700;
+  color:#64748b;
+  margin-left:2px;
+}
+.tv-board-overlay .tv-kpi-card-c .tv-kpi-value-sm {
+  font-size:24px;
+}
+.tv-board-overlay .tv-kpi-card-c .tv-kpi-sub {
+  font-size:14px;
+  font-weight:700;
+  color:#64748b;
+  margin-left:6px;
+  white-space:nowrap;
+}
+/* §6. inline 전월 대비 (이번달 불량 카드) */
+.tv-board-overlay .tv-kpi-card-c .tv-kpi-inline {
+  display:flex;
+  align-items:baseline;
+  gap:10px;
+  flex-wrap:wrap;
+}
+.tv-board-overlay .tv-kpi-card-c .tv-kpi-inline strong {
+  font-size:34px;
+  font-weight:900;
+  line-height:1;
+  color:#0f172a;
+  font-variant-numeric:tabular-nums;
+  white-space:nowrap;
+}
+.tv-board-overlay .tv-kpi-card-c .tv-kpi-inline-delta {
+  font-size:14px;
+  font-weight:800;
+  white-space:nowrap;
+  padding:3px 8px;
+  border-radius:6px;
+  background:#fff;
+  border:1px solid var(--tv-border-soft);
+}
+.tv-board-overlay .tv-kpi-card-c .tv-kpi-inline-delta.up   { color:#dc2626; border-color:#fecaca; background:#fef2f2; }
+.tv-board-overlay .tv-kpi-card-c .tv-kpi-inline-delta.down { color:#16a34a; border-color:#bbf7d0; background:#f0fdf4; }
+.tv-board-overlay .tv-kpi-card-c .tv-kpi-inline-delta.flat { color:#64748b; }
+.tv-board-overlay .tv-kpi-card-c .tv-mid-chip {
+  font-size:12px;
+  font-weight:800;
+  color:#b45309;
+  background:#fef3c7;
+  border:1px solid #fcd34d;
+  padding:1px 6px;
+  border-radius:999px;
+  margin-left:4px;
+}
+.tv-board-overlay .tv-kpi-card-c.tv-kpi-primary {
+  grid-column: span 1;
+}
+
+/* ── §5/§7. KPI 슬라이드 main grid (차트 + 비교) ──────────────── */
+.tv-board-overlay .tv-kpi-page .tv-kpi-main-grid {
+  display:grid;
+  grid-template-columns: minmax(0, 1.65fr) minmax(260px, .65fr);
+  gap:12px;
+  min-height:0;
+  overflow:hidden;
+}
+.tv-board-overlay .tv-kpi-page .tv-kpi-trend-panel {
+  display:flex;
+  flex-direction:column;
+  min-height:0;
+  overflow:hidden;
+  padding:12px 16px;
+}
+.tv-board-overlay .tv-kpi-page .tv-kpi-trend-panel .tv-panel-head {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  flex-shrink:0;
+  margin-bottom:6px;
+}
+.tv-board-overlay .tv-kpi-page .tv-kpi-trend-panel .tv-panel-title {
+  font-size:18px;
+  font-weight:900;
+  color:#0f172a;
+}
+.tv-board-overlay .tv-mid-badge-sm {
+  font-size:13px !important;
+  font-weight:800;
+  color:#b45309;
+  background:#fef3c7;
+  border:1px solid #fcd34d;
+  padding:3px 10px;
+  border-radius:999px;
+  white-space:nowrap;
+}
+.tv-board-overlay .tv-kpi-page .tv-kpi-trend-area {
+  flex:1;
+  min-height:0;
+  display:flex;
+  align-items:stretch;
+}
+.tv-board-overlay .tv-kpi-page .tv-kpi-trend-area .tv-line-svg {
+  width:100%;
+  height:100%;
+  display:block;
+}
+.tv-board-overlay .tv-kpi-page .tv-kpi-compare-panel {
+  display:flex;
+  flex-direction:column;
+  min-height:0;
+  overflow:hidden;
+  padding:12px 14px;
+}
+
+/* ── §5/§8. KPI 슬라이드 bottom grid (210px 고정, 잘림 방지) ────── */
+.tv-board-overlay .tv-kpi-page .tv-kpi-bottom-grid {
+  display:grid;
+  grid-template-columns:1fr 1.35fr;
+  gap:12px;
+  min-height:0;
+  height:210px;
+  max-height:210px;
+  overflow:hidden;
+}
+.tv-board-overlay .tv-kpi-page .tv-kpi-bottom-grid .tv-panel {
+  padding:10px 14px;
+  display:flex;
+  flex-direction:column;
+  min-height:0;
+  overflow:hidden;
+}
+.tv-board-overlay .tv-kpi-page .tv-kpi-bottom-grid .tv-panel-title {
+  font-size:16px;
+  font-weight:900;
+  margin-bottom:4px;
+  flex-shrink:0;
+}
+.tv-board-overlay .tv-kpi-page .tv-kpi-bot-list {
+  display:flex;
+  flex-direction:column;
+  gap:3px;
+  flex:1;
+  min-height:0;
+  overflow:hidden;
+}
+/* §8. bar row compact — 30~34px, ellipsis, 잘림 방지 */
+.tv-board-overlay .tv-bar-row-kpi-bot {
+  display:grid !important;
+  grid-template-columns: minmax(110px, 160px) minmax(60px, 1fr) 50px 70px !important;
+  gap:8px !important;
+  align-items:center !important;
+  min-height:30px !important;
+  height:32px !important;
+  padding:0 4px !important;
+}
+.tv-board-overlay .tv-bar-row-kpi-bot .tv-bar-name {
+  font-size:14px !important;
+  font-weight:800 !important;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  min-width:0;
+}
+.tv-board-overlay .tv-bar-row-kpi-bot .tv-bar-track {
+  height:14px !important;
+  border-radius:7px;
+  background:#f1f5f9;
+  position:relative;
+  overflow:hidden;
+}
+.tv-board-overlay .tv-bar-row-kpi-bot .tv-bar-track i {
+  display:block;
+  height:100%;
+  border-radius:7px;
+}
+.tv-board-overlay .tv-bar-row-kpi-bot .tv-bar-value {
+  font-size:16px !important;
+  font-weight:900 !important;
+  text-align:right;
+  white-space:nowrap;
+  font-variant-numeric:tabular-nums;
+}
+.tv-board-overlay .tv-bar-row-kpi-bot .tv-delta {
+  font-size:13px !important;
+  font-weight:800 !important;
+  text-align:right;
+  white-space:nowrap;
+}
+/* 중요도 bar row compact */
+.tv-board-overlay .tv-bar-row-sev {
+  display:grid !important;
+  grid-template-columns: 60px minmax(60px, 1fr) 50px 70px !important;
+  gap:8px !important;
+  align-items:center !important;
+  min-height:30px !important;
+  height:32px !important;
+  padding:0 4px !important;
+}
+.tv-board-overlay .tv-bar-row-sev .tv-bar-name {
+  font-size:15px !important;
+  font-weight:900 !important;
+}
+.tv-board-overlay .tv-bar-row-sev .tv-bar-track {
+  height:14px !important;
+}
+.tv-board-overlay .tv-bar-row-sev .tv-bar-value {
+  font-size:16px !important;
+  font-weight:900 !important;
+  text-align:right;
+  font-variant-numeric:tabular-nums;
+}
+.tv-board-overlay .tv-bar-row-sev .tv-delta {
+  font-size:13px !important;
+  font-weight:800 !important;
+  text-align:right;
+}
+
+/* ── §9/§10. 품질 / 불량 현황 페이지 grid (86 / 1fr / 88) ─────── */
+.tv-board-overlay .tv-quality-page {
+  height:100%;
+  display:grid;
+  grid-template-rows: auto 86px 1fr 88px;
+  gap:10px;
+  padding:14px 18px;
+  overflow:hidden;
+  box-sizing:border-box;
+}
+.tv-board-overlay .tv-quality-kpis {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+  height:86px;
+  min-height:0;
+}
+.tv-board-overlay .tv-quality-kpis .tv-kpi-card-c {
+  height:86px;
+}
+.tv-board-overlay .tv-quality-kpis .tv-kpi-card-c .tv-kpi-value {
+  font-size:30px;
+}
+.tv-board-overlay .tv-quality-kpis .tv-kpi-card-c .tv-kpi-inline strong {
+  font-size:30px;
+}
+.tv-board-overlay .tv-quality-main-grid {
+  display:grid;
+  grid-template-columns: 1.2fr .8fr;
+  gap:12px;
+  min-height:0;
+  overflow:hidden;
+}
+.tv-board-overlay .tv-quality-main-grid .tv-panel {
+  padding:12px 18px;
+  display:flex;
+  flex-direction:column;
+  min-height:0;
+  overflow:hidden;
+}
+.tv-board-overlay .tv-quality-main-grid .tv-panel-title {
+  flex-shrink:0;
+  font-size:18px;
+  font-weight:900;
+  margin-bottom:8px;
+}
+.tv-board-overlay .tv-quality-main-grid .tv-bar-list {
+  flex:1;
+  min-height:0;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+.tv-board-overlay .tv-cat-other {
+  font-size:14px;
+  color:#64748b;
+  font-weight:700;
+  margin-top:4px;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+/* §9. Top5 overflow 해결 — grid 240/1fr/64/90, ellipsis, track 35-45% */
+.tv-board-overlay .tv-quality-overview .tv-bar-row {
+  display:grid !important;
+  grid-template-columns: minmax(180px, 240px) minmax(120px, 1fr) 64px 90px !important;
+  gap:10px !important;
+  align-items:center !important;
+  min-height:44px !important;
+  height:auto !important;
+  overflow:hidden;
+  padding:0 2px;
+}
+.tv-board-overlay .tv-quality-overview .tv-bar-name {
+  font-size:20px !important;
+  font-weight:800 !important;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  min-width:0;
+}
+.tv-board-overlay .tv-quality-overview .tv-bar-track {
+  min-width:0;
+  height:22px !important;
+  border-radius:999px;
+  background:#f1f5f9;
+  overflow:hidden;
+}
+.tv-board-overlay .tv-quality-overview .tv-bar-track i {
+  display:block;
+  height:100%;
+}
+.tv-board-overlay .tv-quality-overview .tv-bar-value {
+  font-size:22px !important;
+  font-weight:900 !important;
+  text-align:right;
+  white-space:nowrap;
+  font-variant-numeric:tabular-nums;
+}
+.tv-board-overlay .tv-quality-overview .tv-delta {
+  font-size:15px !important;
+  font-weight:800 !important;
+  text-align:right;
+  white-space:nowrap;
+}
+/* §9. 조치 참고 — 2열 grid + 2-line clamp */
+.tv-board-overlay .tv-quality-bottom.tv-action-note {
+  height:88px;
+  min-height:88px;
+  max-height:88px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  overflow:hidden;
+}
+.tv-board-overlay .tv-action-note .note {
+  font-size:18px;
+  line-height:1.25;
+  font-weight:800;
+  padding:12px 16px;
+  border-radius:12px;
+  background:#f8fafc;
+  border:1px solid var(--tv-border-soft);
+  display:-webkit-box;
+  -webkit-line-clamp:2;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
+  word-break:keep-all;
+}
+.tv-board-overlay .tv-action-note .note .ico {
+  margin-right:6px;
+}
+.tv-board-overlay .tv-action-note .note.crit { background:#fef2f2; border-color:#fecaca; color:#991b1b; }
+.tv-board-overlay .tv-action-note .note.warn { background:#fff7ed; border-color:#fed7aa; color:#9a3412; }
+.tv-board-overlay .tv-action-note .note.ok   { background:#f0fdf4; border-color:#bbf7d0; color:#166534; }
+
+/* ── §11. 월별 불량추이 페이지 grid (48 / 1fr / 112) ───────────── */
+.tv-board-overlay .tv-monthly-page {
+  height:100%;
+  display:grid;
+  grid-template-rows: auto 1fr auto auto;
+  gap:10px;
+  padding:14px 18px;
+  overflow:hidden;
+  box-sizing:border-box;
+}
+.tv-board-overlay .tv-monthly-page .tv-slide-title {
+  flex-shrink:0;
+}
+.tv-board-overlay .tv-monthly-page .tv-monthly-chart-card {
+  display:flex;
+  flex-direction:column;
+  min-height:0;
+  overflow:hidden;
+  padding:14px 18px;
+  gap:10px;
+  flex:1;
+}
+.tv-board-overlay .tv-monthly-page .tv-monthly-chart-area {
+  flex:1;
+  min-height:0;
+  display:flex;
+}
+.tv-board-overlay .tv-monthly-page .tv-monthly-chart-area .tv-line-svg {
+  width:100%;
+  height:100%;
+  display:block;
+}
+.tv-board-overlay .tv-monthly-page .tv-monthly-kpis {
+  flex-shrink:0;
+  height:auto;
+}
+.tv-board-overlay .tv-monthly-page .tv-monthly-kpis .tv-kpi-card {
+  height:96px;
+}
+.tv-board-overlay .tv-monthly-page .tv-monthly-chart-foot {
+  display:flex;
+  justify-content:flex-end;
+  flex-shrink:0;
+}
+.tv-board-overlay .tv-mid-chip {
+  display:inline-block;
+  font-size:14px;
+  font-weight:800;
+  color:#b45309;
+  background:#fef3c7;
+  border:1px solid #fcd34d;
+  padding:2px 10px;
+  border-radius:999px;
+  margin-left:8px;
+  vertical-align:middle;
+}
+
+/* ── §11. SVG 라벨 더 강한 stroke (alternate offset 가독성) ───── */
+.tv-board-overlay .tv-chart-point-label {
+  font-size:18px;
+  font-weight:900;
+  paint-order:stroke;
+  stroke:#ffffff;
+  stroke-width:5px;
+  font-variant-numeric:tabular-nums;
+}
+
+/* ── §13. 달력 페이지 grid (58 / 1fr) ──────────────────────────── */
+.tv-board-overlay .tv-calendar-page {
+  height:100%;
+  display:grid;
+  grid-template-rows:58px 1fr;
+  gap:10px;
+  padding:14px 18px;
+  overflow:hidden;
+  box-sizing:border-box;
+}
+.tv-board-overlay .tv-calendar-page .tv-calendar-page-head {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  flex-wrap:wrap;
+  height:58px;
+  min-height:58px;
+}
+.tv-board-overlay .tv-calendar-page .tv-calendar-month-title {
+  font-size:46px;
+  font-weight:900;
+  line-height:1;
+  color:#0f172a;
+  text-align:left;
+  letter-spacing:-0.5px;
+  margin:0;
+  padding:0;
+}
+.tv-board-overlay .tv-calendar-page .tv-cal-grid-wrap {
+  min-height:0;
+  height:100%;
+  overflow:hidden;
+}
+.tv-board-overlay .tv-calendar-page .tv-cal-grid {
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  min-height:0;
+}
+.tv-board-overlay .tv-calendar-page .tv-cal-body {
+  flex:1;
+  min-height:0;
+}
+
+/* ── 신규: 이번달 품질 집중관리 슬라이드 ───────────────────────── */
+.tv-board-overlay .tv-focus-page {
+  height:100%;
+  display:grid;
+  grid-template-rows: auto 96px 1fr 76px;
+  gap:10px;
+  padding:14px 18px;
+  overflow:hidden;
+  box-sizing:border-box;
+}
+.tv-board-overlay .tv-focus-kpis {
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:12px;
+  height:96px;
+}
+.tv-board-overlay .tv-focus-kpis .tv-kpi-card-c {
+  height:96px;
+  padding:14px 18px;
+}
+.tv-board-overlay .tv-focus-kpis .tv-kpi-card-c .tv-kpi-value {
+  font-size:38px;
+}
+.tv-board-overlay .tv-focus-main-grid {
+  display:grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap:12px;
+  min-height:0;
+  overflow:hidden;
+}
+.tv-board-overlay .tv-focus-main-grid .tv-panel {
+  padding:14px 18px;
+  display:flex;
+  flex-direction:column;
+  min-height:0;
+  overflow:hidden;
+}
+.tv-board-overlay .tv-focus-main-grid .tv-panel-title {
+  flex-shrink:0;
+  font-size:20px;
+  font-weight:900;
+  margin-bottom:10px;
+}
+.tv-board-overlay .tv-focus-bars {
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  flex:1;
+  min-height:0;
+  overflow:hidden;
+}
+.tv-board-overlay .tv-bar-row-focus {
+  display:grid !important;
+  grid-template-columns: minmax(160px, 220px) minmax(100px, 1fr) 90px 70px !important;
+  gap:10px !important;
+  align-items:center !important;
+  min-height:44px !important;
+  padding:0 2px;
+}
+.tv-board-overlay .tv-bar-row-focus .tv-bar-name {
+  font-size:20px !important;
+  font-weight:800 !important;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  min-width:0;
+}
+.tv-board-overlay .tv-bar-row-focus .tv-bar-track {
+  height:22px !important;
+  border-radius:999px;
+  background:#f1f5f9;
+  overflow:hidden;
+}
+.tv-board-overlay .tv-bar-row-focus .tv-bar-track i { display:block; height:100%; }
+.tv-board-overlay .tv-bar-row-focus .tv-bar-value {
+  font-size:22px !important;
+  font-weight:900 !important;
+  text-align:right;
+  white-space:nowrap;
+  font-variant-numeric:tabular-nums;
+}
+.tv-board-overlay .tv-bar-row-focus .tv-bar-value .u-sm {
+  font-size:13px !important;
+  font-weight:700;
+  color:#94a3b8;
+  margin-left:3px;
+}
+.tv-board-overlay .tv-bar-row-focus .tv-delta {
+  font-size:18px !important;
+  font-weight:900 !important;
+  text-align:right;
+  color:#dc2626;
+}
+/* 중요도 우선순위 row */
+.tv-board-overlay .tv-focus-sev-list {
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  flex:1;
+  min-height:0;
+  overflow:hidden;
+}
+.tv-board-overlay .tv-focus-sev-row {
+  display:grid;
+  grid-template-columns: 64px 1fr;
+  gap:14px;
+  align-items:center;
+  padding:10px 14px;
+  background:#f8fafc;
+  border:1px solid var(--tv-border-soft);
+  border-radius:12px;
+  min-height:54px;
+}
+.tv-board-overlay .tv-focus-sev-tag {
+  width:64px;
+  height:36px;
+  border-radius:8px;
+  color:#fff;
+  font-size:18px;
+  font-weight:900;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.tv-board-overlay .tv-focus-sev-mid {
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+  min-width:0;
+}
+.tv-board-overlay .tv-focus-sev-priority {
+  font-size:14px;
+  font-weight:700;
+  color:#64748b;
+}
+.tv-board-overlay .tv-focus-sev-count {
+  font-size:22px;
+  font-weight:900;
+  color:#0f172a;
+  white-space:nowrap;
+}
+.tv-board-overlay .tv-focus-sev-count .u {
+  font-size:14px;
+  font-weight:700;
+  color:#64748b;
+  margin-left:2px;
+}
+.tv-board-overlay .tv-delta-inline {
+  font-size:14px;
+  font-weight:800;
+  margin-left:10px;
+  padding:2px 8px;
+  border-radius:6px;
+  background:#fff;
+  border:1px solid var(--tv-border-soft);
+}
+.tv-board-overlay .tv-delta-inline.up   { color:#dc2626; border-color:#fecaca; background:#fef2f2; }
+.tv-board-overlay .tv-delta-inline.down { color:#16a34a; border-color:#bbf7d0; background:#f0fdf4; }
+.tv-board-overlay .tv-delta-inline.flat { color:#64748b; }
+/* 하단 작업자 확인 문구 */
+.tv-board-overlay .tv-focus-notes {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  height:76px;
+  min-height:76px;
+  max-height:76px;
+  overflow:hidden;
+}
+.tv-board-overlay .tv-focus-note {
+  background:#fff7ed;
+  border:1px solid #fed7aa;
+  border-radius:12px;
+  padding:14px 18px;
+  font-size:20px;
+  font-weight:800;
+  color:#9a3412;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.tv-board-overlay .tv-focus-note .ico {
+  font-size:22px;
+}
+
+/* §FIX(08U-clock-overflow): 헤더의 시계가 column 2줄(날짜 18px + 시간 34px = 54px)로
+   쌓여 헤더 58px 안에 안 들어가 슬라이드 stage 위로 침범하던 문제 수정.
+   - 가로 row 배치로 변경
+   - 폰트 축소 (날짜 15 / 시간 22)
+   - 헤더에 overflow:hidden + z-index:10 + 배경 강제하여 새지 않도록 차단
+   - 헤더 높이는 그대로(58px) 유지 → 슬라이드 stage 영역 영향 없음 */
+.tv-board-overlay .tv-board-header {
+  padding: 0 24px !important;
+  overflow: hidden !important;
+  position: relative !important;
+  z-index: 10 !important;
+  background: var(--tv-panel) !important;
+  border-bottom: 1px solid var(--tv-border) !important;
+}
+.tv-board-overlay .tv-board-clock {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: baseline !important;
+  gap: 12px !important;
+  line-height: 1 !important;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.tv-board-overlay .tv-board-clock #tvBoardDate {
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  color: var(--tv-sub);
+  line-height: 1 !important;
+  white-space: nowrap;
+}
+.tv-board-overlay .tv-board-clock #tvBoardTime {
+  font-size: 22px !important;
+  font-weight: 900 !important;
+  color: var(--tv-text);
+  letter-spacing: 0.5px !important;
+  line-height: 1 !important;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+/* 슬라이드 stage가 헤더 위로 올라가지 못하도록 z-index 보장 */
+.tv-board-overlay .tv-board-stage {
+  position: relative;
+  z-index: 1;
+}
+
+/* Q_REBUILD_08U FULLSCREEN AND SLIDE RELAYOUT CSS PATCH END */
+
+/* Q_REBUILD_08S TV STATUS BOARD CSS END */
+

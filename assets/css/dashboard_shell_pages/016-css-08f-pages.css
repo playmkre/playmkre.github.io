@@ -1,0 +1,44 @@
+/* Extracted from ODI_USER_PORTAL_IMPL_Q_REBUILD_08U_TV_STATUS_BOARD_FULLSCREEN_AND_SLIDE_RELAYOUT (3)(2).html :: style block 16 id=css-08f-pages :: OPT01 no semantic edits */
+
+/* ── 08F: 장비 생산현황 + 팀별 업무 현황 ── */
+.equip-layout { display:grid; grid-template-columns:200px 1fr 280px; gap:12px; max-height:calc(100vh - 220px); overflow:hidden; }
+.equip-search-panel { display:flex; flex-direction:column; gap:6px; overflow-y:auto; padding:8px; background:var(--sf); border:1px solid var(--bd); border-radius:8px; }
+.equip-cards-panel { overflow-y:auto; padding:4px; }
+.equip-detail-panel { overflow-y:auto; padding:10px; background:var(--sf); border:1px solid var(--bd); border-radius:8px; }
+.equip-card { background:var(--sf); border:1px solid var(--bd); border-radius:8px; padding:10px 12px; margin-bottom:8px; cursor:pointer; transition:border-color .15s,background .15s; }
+.equip-card:hover { border-color:var(--ac); }
+.equip-card.selected { border-color:var(--ac); background:rgba(88,166,255,.08); }
+.equip-card-name { font-size:12px; font-weight:700; color:var(--ts); margin-bottom:4px; }
+.equip-card-meta { font-size:10px; color:var(--tm); }
+.equip-card-status { display:inline-block; padding:1px 7px; border-radius:8px; font-size:9px; font-weight:700; margin-top:4px; }
+.equip-card-status.mat { background:rgba(240,200,74,.2); color:#c8a200; }
+.equip-card-status.work { background:rgba(107,168,232,.2); color:var(--ac); }
+.equip-card-status.ship { background:rgba(34,211,238,.2); color:#0891b2; }
+.equip-card-status.done { background:rgba(34,197,94,.2); color:var(--gr); }
+.equip-card-status.delay { background:rgba(239,68,68,.2); color:var(--rd); }
+.equip-card-status.wait { background:var(--bd); color:var(--tm); }
+.equip-search-item { padding:5px 8px; border-radius:5px; font-size:10px; cursor:pointer; color:var(--ts); transition:background .15s; }
+.equip-search-item:hover,.equip-search-item.active { background:var(--bd); }
+/* 팀별 업무 현황 */
+.team-prep-card { background:var(--sf); border:1.5px solid var(--bd); border-radius:8px; padding:12px 14px; margin-bottom:12px; }
+.team-prep-ok { border-color:var(--gr); }
+.team-prep-warn { border-color:var(--am); }
+.team-prep-label { font-size:10px; font-weight:700; color:var(--ts); margin-bottom:6px; }
+.team-badge { display:inline-block; padding:1px 7px; border-radius:8px; font-size:9px; font-weight:600; background:var(--bd); color:var(--tm); margin-right:4px; }
+.team-badge.ok { background:rgba(34,197,94,.15); color:var(--gr); }
+.team-badge.warn { background:rgba(249,115,22,.15); color:var(--am); }
+.team-badge.err { background:rgba(239,68,68,.15); color:var(--rd); }
+.team-2col { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:12px; margin-bottom:12px; }
+.team-card { background:var(--sf); border:1px solid var(--bd); border-radius:8px; padding:12px; }
+.team-card-title { font-size:11px; font-weight:700; color:var(--ts); margin-bottom:8px; }
+.team-unassigned-card { background:var(--sf); border:1px solid var(--am); border-radius:8px; padding:12px; margin-bottom:12px; }
+.team-tbl { width:100%; border-collapse:collapse; font-size:10px; }
+.team-tbl th { background:var(--bd); color:var(--tm); font-weight:600; padding:4px 8px; text-align:left; position:sticky; top:0; z-index:2; }
+.team-tbl td { padding:3px 8px; border-bottom:1px solid var(--bd); color:var(--ts); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.team-tbl tr:hover td { background:rgba(88,166,255,.06); cursor:pointer; }
+.team-tbl tr.selected td { background:rgba(88,166,255,.12); }
+@media(max-width:768px){
+  .equip-layout{grid-template-columns:1fr;max-height:none;}
+  .equip-detail-panel{max-height:300px;}
+  .team-2col{grid-template-columns:1fr;}
+}
