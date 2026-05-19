@@ -1,0 +1,2 @@
+/* Extracted from ODI_USER_PORTAL_IMPL_Q_REBUILD_08U_TV_STATUS_BOARD_FULLSCREEN_AND_SLIDE_RELAYOUT (3)(2).html :: script block 2 id=(none) :: OPT01 no semantic edits */
+(function(){setTimeout(function(){sfgRenderBar('sfg-filter-container');},100);})();
