@@ -1935,11 +1935,11 @@ else tvBoot();
  *   실제 base64는 파일 하단 별도 블록에서 주입
  * ===================================================================== */
 window.ODI_TV_TOON_IMAGES = [
-  "../media/media-001-c89cdbf8d6.png",
-  "../media/media-002-a3ed451355.png",
-  "../media/media-003-4b5074825c.png",
-  "../media/media-004-523f6f7184.png",
-  "../media/media-005-8eb0cd825f.png"
+  "assets/media/media-001-c89cdbf8d6.png",
+  "assets/media/media-002-a3ed451355.png",
+  "assets/media/media-003-4b5074825c.png",
+  "assets/media/media-004-523f6f7184.png",
+  "assets/media/media-005-8eb0cd825f.png"
 ];
 
 
