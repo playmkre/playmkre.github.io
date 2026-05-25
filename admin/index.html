@@ -1,25 +1,24 @@
 <!DOCTYPE html>
 
-<html lang="ko">
+<html lang="ko" class="tsl-auth-pending">
 <head>
 <script id="tsl-temp-access-precheck">
 (function(){
+  document.documentElement.classList.add('tsl-auth-pending');
   try {
     if (sessionStorage.getItem('techsyslab.tempAccess.v1') === '1') {
+      document.documentElement.classList.remove('tsl-auth-pending');
       document.documentElement.classList.add('tsl-auth-unlocked');
-    } else {
-      document.documentElement.classList.add('tsl-auth-pending');
     }
-  } catch (e) {
-    document.documentElement.classList.add('tsl-auth-pending');
-  }
+  } catch (e) {}
 })();
 </script>
 <style id="tsl-temp-access-prehide">
 html.tsl-auth-pending, html.tsl-auth-pending body{min-height:100%;background:#0d1117!important;}
-html.tsl-auth-pending body > *:not(#tsl-temp-login-overlay){display:none!important;}
+html.tsl-auth-pending body > *:not(#tsl-temp-login-overlay){display:none!important;visibility:hidden!important;}
+html.tsl-auth-unlocked body > #tsl-temp-login-overlay{display:none!important;}
 #tsl-temp-login-overlay{position:fixed;inset:0;z-index:2147483647;display:flex!important;align-items:center;justify-content:center;padding:24px;background:radial-gradient(circle at top,#172033 0,#0d1117 52%,#070a0f 100%);color:#e6edf3;font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;}
-#tsl-temp-login-overlay .tsl-temp-login-card{width:min(420px,100%);padding:30px 28px;border:1px solid rgba(255,255,255,.12);border-radius:22px;background:rgba(13,17,23,.92);box-shadow:0 24px 70px rgba(0,0,0,.42);}
+#tsl-temp-login-overlay .tsl-temp-login-card{width:min(420px,100%);padding:30px 28px;border:1px solid rgba(255,255,255,.12);border-radius:22px;background:rgba(13,17,23,.96);box-shadow:0 24px 70px rgba(0,0,0,.52);}
 #tsl-temp-login-overlay .tsl-temp-login-eyebrow{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#58a6ff;margin-bottom:10px;font-weight:700;}
 #tsl-temp-login-overlay h1{font-size:24px;line-height:1.25;margin:0 0 8px;font-weight:800;color:#f0f6fc;}
 #tsl-temp-login-overlay .tsl-temp-login-desc{margin:0 0 22px;color:#8b949e;font-size:14px;}
@@ -299,6 +298,21 @@ textarea{resize:none;width:100%}
 
 </style>
 </head><body data-admin-version="v0.4.1_EMPTY_SCHEMA_START" data-theme="dark" id="top">
+<div id="tsl-temp-login-overlay" role="dialog" aria-modal="true">
+  <div class="tsl-temp-login-card">
+    <div class="tsl-temp-login-eyebrow">TechSysLab</div>
+    <h1>접속 인증</h1>
+    <p class="tsl-temp-login-desc">승인된 사용자만 접속할 수 있습니다.</p>
+    <form id="tsl-temp-login-form" autocomplete="off">
+      <label>아이디<input id="tsl-temp-login-user" type="text" autocomplete="username" /></label>
+      <label>비밀번호<input id="tsl-temp-login-pass" type="password" autocomplete="current-password" /></label>
+      <p id="tsl-temp-login-error" class="tsl-temp-login-error" aria-live="polite"></p>
+      <button type="submit">로그인</button>
+    </form>
+    <p class="tsl-temp-login-note">임시 프론트 잠금입니다. 운영 데이터 보호는 서버 인증/RBAC 적용 후 확정합니다.</p>
+  </div>
+</div>
+
 <div id="topbar">
 <div class="tb-logo"><div class="tb-dot"></div>ODI 관리자 콘솔</div>
 <div class="tb-sep"></div>

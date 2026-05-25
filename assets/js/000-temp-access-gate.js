@@ -21,22 +21,22 @@
 
   function isUnlocked(){ return safeGet(STORAGE_KEY) === '1'; }
 
-  function setUnlocked(){
+  function unlock(){
     safeSet(STORAGE_KEY, '1');
     document.documentElement.classList.remove('tsl-auth-pending');
     document.documentElement.classList.add('tsl-auth-unlocked');
     var overlay = document.getElementById(OVERLAY_ID);
-    if (overlay) overlay.remove();
+    if (overlay) overlay.style.display = 'none';
   }
 
-  function setLocked(){
-    document.documentElement.classList.add('tsl-auth-pending');
+  function lock(){
     document.documentElement.classList.remove('tsl-auth-unlocked');
+    document.documentElement.classList.add('tsl-auth-pending');
+    var overlay = document.getElementById(OVERLAY_ID);
+    if (overlay) overlay.style.display = 'flex';
   }
 
-  function renderGate(){
-    if (document.getElementById(OVERLAY_ID)) return;
-
+  function createOverlay(){
     var overlay = document.createElement('div');
     overlay.id = OVERLAY_ID;
     overlay.setAttribute('role','dialog');
@@ -54,17 +54,24 @@
         '</form>' +
         '<p class="tsl-temp-login-note">임시 프론트 잠금입니다. 운영 데이터 보호는 서버 인증/RBAC 적용 후 확정합니다.</p>' +
       '</div>';
-
     document.body.insertBefore(overlay, document.body.firstChild);
+    return overlay;
+  }
+
+  function bindGate(){
+    var overlay = document.getElementById(OVERLAY_ID) || createOverlay();
+    if (overlay.getAttribute('data-bound') === '1') return;
+    overlay.setAttribute('data-bound', '1');
 
     var form = document.getElementById('tsl-temp-login-form');
     var user = document.getElementById('tsl-temp-login-user');
     var pass = document.getElementById('tsl-temp-login-pass');
     var error = document.getElementById('tsl-temp-login-error');
+    if (!form || !user || !pass || !error) return;
 
     user.value = '';
     pass.value = '';
-    setTimeout(function(){ user.focus(); }, 0);
+    setTimeout(function(){ try { user.focus(); } catch(e){} }, 0);
 
     form.addEventListener('submit', function(ev){
       ev.preventDefault();
@@ -72,7 +79,7 @@
       var p = pass.value || '';
       if (u === REQUIRED_USER && p === REQUIRED_PASSWORD) {
         error.textContent = '';
-        setUnlocked();
+        unlock();
         return;
       }
       error.textContent = '아이디 또는 비밀번호가 올바르지 않습니다.';
@@ -83,10 +90,10 @@
 
   function init(){
     if (isUnlocked()) {
-      setUnlocked();
+      unlock();
     } else {
-      setLocked();
-      renderGate();
+      lock();
+      bindGate();
     }
   }
 
