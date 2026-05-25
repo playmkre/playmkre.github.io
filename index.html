@@ -8,6 +8,37 @@ Rollback: original source file remains untouched.
 -->
 <html lang="ko">
 <head>
+<script id="tsl-temp-access-precheck">
+(function(){
+  try {
+    if (sessionStorage.getItem('techsyslab.tempAccess.v1') === '1') {
+      document.documentElement.classList.add('tsl-auth-unlocked');
+    } else {
+      document.documentElement.classList.add('tsl-auth-pending');
+    }
+  } catch (e) {
+    document.documentElement.classList.add('tsl-auth-pending');
+  }
+})();
+</script>
+<style id="tsl-temp-access-prehide">
+html.tsl-auth-pending, html.tsl-auth-pending body{min-height:100%;background:#0d1117!important;}
+html.tsl-auth-pending body > *:not(#tsl-temp-login-overlay){display:none!important;}
+#tsl-temp-login-overlay{position:fixed;inset:0;z-index:2147483647;display:flex!important;align-items:center;justify-content:center;padding:24px;background:radial-gradient(circle at top,#172033 0,#0d1117 52%,#070a0f 100%);color:#e6edf3;font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;}
+#tsl-temp-login-overlay .tsl-temp-login-card{width:min(420px,100%);padding:30px 28px;border:1px solid rgba(255,255,255,.12);border-radius:22px;background:rgba(13,17,23,.92);box-shadow:0 24px 70px rgba(0,0,0,.42);}
+#tsl-temp-login-overlay .tsl-temp-login-eyebrow{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#58a6ff;margin-bottom:10px;font-weight:700;}
+#tsl-temp-login-overlay h1{font-size:24px;line-height:1.25;margin:0 0 8px;font-weight:800;color:#f0f6fc;}
+#tsl-temp-login-overlay .tsl-temp-login-desc{margin:0 0 22px;color:#8b949e;font-size:14px;}
+#tsl-temp-login-overlay label{display:block;font-size:13px;color:#c9d1d9;margin:14px 0 0;}
+#tsl-temp-login-overlay input{width:100%;height:44px;margin-top:6px;border-radius:12px;border:1px solid rgba(255,255,255,.14);background:#0d1117;color:#f0f6fc;padding:0 13px;font-size:15px;outline:none;}
+#tsl-temp-login-overlay input:focus{border-color:#58a6ff;box-shadow:0 0 0 3px rgba(88,166,255,.18);}
+#tsl-temp-login-overlay button{width:100%;height:46px;margin-top:18px;border:0;border-radius:12px;background:#238636;color:#fff;font-weight:800;font-size:15px;cursor:pointer;}
+#tsl-temp-login-overlay button:hover{background:#2ea043;}
+#tsl-temp-login-overlay .tsl-temp-login-error{min-height:18px;margin:10px 0 0;color:#ff7b72;font-size:13px;}
+#tsl-temp-login-overlay .tsl-temp-login-note{margin:14px 0 0;color:#6e7681;font-size:12px;line-height:1.5;}
+</style>
+<script id="tsl-temp-access-gate" src="assets/js/000-temp-access-gate.js" defer></script>
+
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>ODI 생산관리 — 사용자 포털 Q_REBUILD_08U_USER_WEB_DEPLOY_v0.1_INDEX_ONLY_READY</title>
 <link rel="stylesheet" href="assets/css/base_core/001-style.css" data-odi-opt01="externalized-style-001">
@@ -2148,7 +2179,6 @@ Rollback: original source file remains untouched.
 
 
 <script id="q-rebuild-08s-tv-status-board-script" src="assets/js/061-q-rebuild-08s-tv-status-board-script.js" data-odi-opt01="externalized-script-061"></script>
-<script id="odi-phase14a-auth-gate" src="assets/js/920-auth-gate.js" data-odi-phase14a="auth-gate"></script>
 
 
 </body></html>
