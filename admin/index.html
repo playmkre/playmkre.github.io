@@ -1884,5 +1884,8 @@ document.addEventListener('DOMContentLoaded', ()=>{
 // MSE init nav hook
 const _origNav = nav; function nav(k){ _origNav(k); if(k==="menu-mgmt"){ setTimeout(()=>{ loadMSE(); renderMseSidebar(); renderMseTable(); renderMseEditPanel(null); },50); } }
 </script>
+<!-- Phase 14B: Server Data Bootstrap (Admin) -->
+<script id="phase14b-server-bootstrap-admin" src="../assets/js/930-server-data-bootstrap.js" defer></script>
+<script id="phase14b-admin-portal-bindings" src="../assets/js/932-admin-server-data-bindings.js" defer></script>
 </body>
 </html>

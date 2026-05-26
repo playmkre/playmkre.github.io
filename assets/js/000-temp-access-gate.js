@@ -27,6 +27,10 @@
     document.documentElement.classList.add('tsl-auth-unlocked');
     var overlay = document.getElementById(OVERLAY_ID);
     if (overlay) overlay.style.display = 'none';
+    /* Phase 14B: 부트스트랩 트리거 이벤트 발행 */
+    try {
+      document.dispatchEvent(new CustomEvent('tsl:gate-unlocked', { bubbles: true }));
+    } catch(e) {}
   }
 
   function lock(){
