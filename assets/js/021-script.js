@@ -1405,6 +1405,7 @@ function schedSaveData(){
   _schedTestLog.verdict = _schedTestLog.kpiMatch ? '부분통과' : '저장됨/화면검수필요';
   console.log('[v0.48 save]', JSON.stringify({ys:YANGSAN_DATA.length, yr:YEONJU_DATA.length, work:WORK_DATA.length, ready:hasScheduleDataReady(), verdict:_schedTestLog.verdict}));
   _refreshTestLogPanel();
+  if(window.__TSL_uploadScheduleAfterNativeSave) window.__TSL_uploadScheduleAfterNativeSave();
 }
 
 function schedDiscardPending(notify=true){
@@ -1557,7 +1558,7 @@ function parseSheetRowsLegacy(ws){
 let _pendingWb=null;
 
 function handleUpload(input){
-  const file=input.files[0];if(!file)return;input.value='';
+  const file=input.files[0];if(!file)return; window.__TSL_LAST_SCHEDULE_FILE=file; input.value='';
   ensureXlsxReady()
     .then(()=>_handleUploadFile(file))
     .catch(err=>{console.error(err);showErr('엑셀 엔진 로드 실패: '+err.message);});
@@ -2832,3 +2833,127 @@ function resetScheduleStorage(){
   _refreshTestLogPanel();
 }
 
+
+
+/* ========================================================================
+ * TSL SERVER AUTHORITY PATCH v1
+ * - 사용자 포털 생산일정 원래 업로드/저장 흐름을 서버 DB와 직접 연결한다.
+ * - 외부 패널/관리자 테스트 업로드/강제 DOM 덮어쓰기 없이, 이 파일의 실제 let 변수에 직접 반영한다.
+ * ======================================================================== */
+(function(){
+  'use strict';
+  const TSL_API_BASE = 'https://api.techsyslab.com';
+  const TSL_STATE = window.TSL_SERVER_AUTHORITY = window.TSL_SERVER_AUTHORITY || { scheduleRows:[], qualityRows:[], lastSync:null };
+  function tslWarn(){ try{ console.warn.apply(console, ['[TSL_SERVER_AUTHORITY]'].concat([].slice.call(arguments))); }catch(_){} }
+  function tslLog(){ try{ console.log.apply(console, ['[TSL_SERVER_AUTHORITY]'].concat([].slice.call(arguments))); }catch(_){} }
+  function nrm(v){ return String(v == null ? '' : v).replace(/[^a-z0-9가-힣]+/gi,'').toLowerCase(); }
+  function pick(obj, keys){
+    obj = obj || {}; const map = {};
+    Object.keys(obj).forEach(k=>{ map[nrm(k)] = obj[k]; });
+    for(const key of keys){ const nk=nrm(key); if(Object.prototype.hasOwnProperty.call(map,nk) && map[nk]!=='' && map[nk]!=null) return String(map[nk]); }
+    for(const k in obj){ const kk=nrm(k); for(const key of keys){ const want=nrm(key); if(want && kk.includes(want) && obj[k]!=='' && obj[k]!=null) return String(obj[k]); } }
+    return '';
+  }
+  function dateOnly(v){ if(!v) return ''; const s=String(v); return /^\d{4}-\d{2}-\d{2}/.test(s) ? s.slice(0,10) : s; }
+  function rawOf(r){ return r && r.raw && typeof r.raw === 'object' ? r.raw : {}; }
+  function toNativeSchedule(r, idx){
+    const raw = rawOf(r);
+    const row = {
+      id: 930000 + idx,
+      batch: pick(raw,['차수','구분','No','NO','번호','수주번호','오더','order_no','order','lot','job']) || r.order_no || String(idx+1),
+      model: pick(raw,['모델명','모델','품명','제품명','장비명','item_name','item','part']) || r.item_name || '',
+      machine: pick(raw,['호기','장비','설비','라인','line','cell','CELL','machine']) || r.line_name || '',
+      note: pick(raw,['비고','메모','기타','note']) || '',
+      type: pick(raw,['상태','진행상태','공정상태']) || r.status || '대기',
+      _valid: true,
+      _errs: []
+    };
+    const plan = r.plan_date || pick(raw,['계획일','생산일','일자','날짜','납기','출고','출하','해체']);
+    if(plan){ row.chulgo = dateOnly(plan); row.planDate = dateOnly(plan); }
+    row.jaje = dateOnly(pick(raw,['자재입고','자 재 입 고','부자재','부자재 입고','부자재입고','자재']));
+    row.ybase = dateOnly(pick(raw,['YBASE','Y BASE','Y-BASE','와이베이스']));
+    row.pod3 = dateOnly(pick(raw,['3POD','3 POD','3-POD']));
+    row.wvpz = dateOnly(pick(raw,['WVPZ','WV/PZ','WV PZ']));
+    row.elmo = dateOnly(pick(raw,['ELMO','엘모']));
+    row.jungjiangStart = dateOnly(pick(raw,['전장/기구/배선 시작','전장기구배선시작','생산 시작','생산시작','작업 시작','작업시작','시작']));
+    row.jungjiangEnd = dateOnly(pick(raw,['전장/기구/배선 종료','전장기구배선종료','생산 종료','생산종료','작업 종료','작업종료','종료']));
+    row.testStart = dateOnly(pick(raw,['TEST 시작','TEST시작','테스트 시작','검사 시작']));
+    row.testEnd = dateOnly(pick(raw,['TEST 종료','TEST종료','테스트 종료','검사 종료']));
+    row.jeokjeungStart = dateOnly(pick(raw,['적층 시작','적층시작']));
+    row.jeokjeungEnd = dateOnly(pick(raw,['적층 종료','적층종료']));
+    row.chulgo = row.chulgo || dateOnly(pick(raw,['출고','출하','출고일','출하일']));
+    row.haeje = dateOnly(pick(raw,['해체','해체일','분해']));
+    return row;
+  }
+  function renderScheduleFromServer(reason){
+    try{
+      const rows = (TSL_STATE.scheduleRows || []).map(toNativeSchedule);
+      if(!rows.length){ tslLog('schedule empty from server', reason); return; }
+      YANGSAN_DATA = JSON.parse(JSON.stringify(rows));
+      YEONJU_DATA = [];
+      PENDING_YANGSAN = null;
+      PENDING_YEONJU = null;
+      WORK_DATA = JSON.parse(JSON.stringify(rows));
+      YANGSAN_IDS = new Set(YANGSAN_DATA.map(r=>r.id));
+      YEONJU_IDS = new Set();
+      SCHEDULE_LAST_SAVED_AT = new Date().toISOString();
+      markScheduleDataReady();
+      try{ syncWorkData(); }catch(e){}
+      try{ commitSavedSnapshot(); }catch(e){}
+      try{ populateEditFilters(); }catch(e){}
+      try{ renderEditTable(); }catch(e){}
+      try{ populateGvFilters(); }catch(e){}
+      try{ renderCurrentView(); }catch(e){}
+      try{ renderDashboardKPI(); }catch(e){}
+      try{ renderDashboardSummaryNotes(); }catch(e){}
+      try{ renderUserProdOverviewPage(); }catch(e){}
+      try{ renderUserProdHeadcountPage(); }catch(e){}
+      try{ renderUserProdProcessPage(); }catch(e){}
+      try{ _updateSchedStatusPanel(); }catch(e){}
+      try{ updateCards(); }catch(e){}
+      const hint=document.getElementById('data-upload-hint');
+      if(hint) hint.textContent = '서버 DB 기준으로 동기화됨 · 생산일정 '+YANGSAN_DATA.length+'행';
+      const badge=document.getElementById('data-save-status');
+      if(badge){ badge.textContent='서버 DB 동기화'; badge.className='badge-pill b-ok'; }
+      tslLog('schedule applied', reason, YANGSAN_DATA.length);
+    }catch(e){ tslWarn('renderScheduleFromServer failed', e); }
+  }
+  async function loadScheduleFromServer(reason){
+    try{
+      const res = await fetch(TSL_API_BASE + '/api/schedule?limit=5000', { cache:'no-store', credentials:'omit' });
+      if(!res.ok) throw new Error('schedule HTTP '+res.status);
+      const data = await res.json();
+      TSL_STATE.scheduleRows = Array.isArray(data.rows) ? data.rows : [];
+      TSL_STATE.lastSync = new Date().toISOString();
+      renderScheduleFromServer(reason || 'load');
+    }catch(e){ tslWarn('schedule server load failed', e && e.message ? e.message : e); }
+  }
+  window.__TSL_uploadScheduleAfterNativeSave = async function(){
+    const file = window.__TSL_LAST_SCHEDULE_FILE;
+    if(!file) { loadScheduleFromServer('save-without-file'); return; }
+    const fd = new FormData();
+    fd.append('file', file, file.name || 'schedule.xlsx');
+    fd.append('uploaded_by', 'user-portal-schedule');
+    try{
+      const res = await fetch(TSL_API_BASE + '/api/public/upload/schedule', { method:'POST', body:fd, credentials:'omit', cache:'no-store' });
+      if(!res.ok){ const t=await res.text(); throw new Error('HTTP '+res.status+' '+t.slice(0,240)); }
+      const data = await res.json();
+      window.__TSL_LAST_SCHEDULE_FILE = null;
+      if(typeof showToast === 'function') showToast('생산일정 서버 저장 완료 — '+(data.insertedCount||data.rowCount||'')+'행', 'ok');
+      await loadScheduleFromServer('after-schedule-upload');
+    }catch(e){
+      if(typeof showErr === 'function') showErr('생산일정 서버 저장 실패: '+(e && e.message ? e.message : e));
+      tslWarn('schedule upload failed', e);
+    }
+  };
+  const _tslOrigNav = typeof nav === 'function' ? nav : null;
+  if(_tslOrigNav){
+    nav = function(k){ const ret = _tslOrigNav.apply(this, arguments); setTimeout(()=>loadScheduleFromServer('nav-'+k), 300); setTimeout(()=>renderScheduleFromServer('nav-render-'+k), 1000); return ret; };
+    window.nav = nav;
+  }
+  window.TSL_loadScheduleFromServer = loadScheduleFromServer;
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', ()=>setTimeout(()=>loadScheduleFromServer('boot'), 600));
+  else setTimeout(()=>loadScheduleFromServer('boot'), 600);
+  window.addEventListener('focus', ()=>setTimeout(()=>loadScheduleFromServer('focus'), 300));
+  document.addEventListener('visibilitychange', ()=>{ if(!document.hidden) setTimeout(()=>loadScheduleFromServer('visible'), 300); });
+})();

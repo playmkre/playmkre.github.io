@@ -10252,3 +10252,100 @@ function _qCalendarHeatmap(dateRows, opts) {
 
 console.log('[07C] Chart UI Density helpers loaded');
 
+
+
+/* ========================================================================
+ * TSL QUALITY SERVER AUTHORITY PATCH v1
+ * - 사용자 포털 품질/불량 원래 업로드 흐름을 서버 DB와 직접 연결한다.
+ * - 이 파일 안의 실제 QDEFECT_* 변수에 직접 반영한다.
+ * ======================================================================== */
+(function(){
+  'use strict';
+  const TSL_API_BASE = 'https://api.techsyslab.com';
+  const TSL_STATE = window.TSL_SERVER_AUTHORITY = window.TSL_SERVER_AUTHORITY || { scheduleRows:[], qualityRows:[], lastSync:null };
+  function tslWarn(){ try{ console.warn.apply(console, ['[TSL_QUALITY_AUTHORITY]'].concat([].slice.call(arguments))); }catch(_){} }
+  function tslLog(){ try{ console.log.apply(console, ['[TSL_QUALITY_AUTHORITY]'].concat([].slice.call(arguments))); }catch(_){} }
+  function nrm(v){ return String(v == null ? '' : v).replace(/[^a-z0-9가-힣]+/gi,'').toLowerCase(); }
+  function pick(obj, keys){
+    obj = obj || {}; const map = {};
+    Object.keys(obj).forEach(k=>{ map[nrm(k)] = obj[k]; });
+    for(const key of keys){ const nk=nrm(key); if(Object.prototype.hasOwnProperty.call(map,nk) && map[nk]!=='' && map[nk]!=null) return String(map[nk]); }
+    for(const k in obj){ const kk=nrm(k); for(const key of keys){ const want=nrm(key); if(want && kk.includes(want) && obj[k]!=='' && obj[k]!=null) return String(obj[k]); } }
+    return '';
+  }
+  function dateOnly(v){ if(!v) return ''; const s=String(v); return /^\d{4}-\d{2}-\d{2}/.test(s) ? s.slice(0,10) : s; }
+  function rawOf(r){ return r && r.raw && typeof r.raw === 'object' ? r.raw : {}; }
+  function toNativeQuality(r, idx){
+    const raw = rawOf(r);
+    const date = dateOnly(pick(raw,['날짜','일자','발생일','접수일','date'])) || '';
+    const sev = r.severity || pick(raw,['중요도','심각도','등급','severity']) || '일반';
+    const content = r.defect_type || pick(raw,['내용','불량내용','현상','이슈내용','사유','불량','defect_type']) || '원본내용확인필요';
+    return {
+      id:'server_Q_'+(r.id || idx), sourceSheet:'server-db', sourceRow:Number(r.row_index || idx+1), monthKey:date?date.slice(0,7):'server',
+      no:r.issue_no || pick(raw,['No','NO','번호','구분','이슈번호','불량번호']) || String(idx+1),
+      date:date, writer:pick(raw,['작성자','writer','담당자'])||'', dept:pick(raw,['부서','dept','팀'])||'',
+      model:pick(raw,['종류','모델','모델명','장비','품명']) || r.item_name || '', machine:pick(raw,['호기','설비','machine','장비번호'])||'',
+      cell:pick(raw,['CELL','cell','셀'])||'', severity:sev, content:content,
+      part:pick(raw,['파트','part','품명','부품']) || r.item_name || '', majorCategory:pick(raw,['대분류','major'])||'', middleCategory:pick(raw,['중분류','middle'])||'', smallCategory:pick(raw,['소분류','small'])||'', etc:pick(raw,['기타','비고','etc'])||'',
+      imageCount:0, images:[], parseStatus:'ok', parseWarnings:[], isCritical:sev==='치명', modelMachineKey:'', categoryPath:''
+    };
+  }
+  function renderQualityFromServer(reason){
+    try{
+      const rows = (TSL_STATE.qualityRows || []).map(toNativeQuality);
+      if(!rows.length){ tslLog('quality empty from server', reason); return; }
+      QDEFECT_RAW_ROWS = rows;
+      QDEFECT_WORKBOOK_READY = true;
+      QDEFECT_FILE = { name:'server-db-quality.xlsx', size:0 };
+      try{ QDEFECT_ANALYTICS = typeof buildQDefectAnalytics === 'function' ? buildQDefectAnalytics(QDEFECT_RAW_ROWS) : QDEFECT_ANALYTICS; }catch(e){}
+      try{ if(typeof refreshQDefectAllPages==='function') refreshQDefectAllPages(); }catch(e){}
+      try{ if(typeof renderQDashPage==='function') renderQDashPage(); }catch(e){}
+      try{ if(typeof renderQMainPage==='function') renderQMainPage(); }catch(e){}
+      try{ if(typeof renderQAnalysisPage==='function') renderQAnalysisPage(); }catch(e){}
+      try{ if(typeof renderQActionPage==='function') renderQActionPage(); }catch(e){}
+      try{ if(typeof renderQImagesPage==='function') renderQImagesPage(); }catch(e){}
+      try{ if(typeof renderQMasterPage==='function') renderQMasterPage(); }catch(e){}
+      tslLog('quality applied', reason, rows.length);
+    }catch(e){ tslWarn('renderQualityFromServer failed', e); }
+  }
+  async function loadQualityFromServer(reason){
+    try{
+      const res = await fetch(TSL_API_BASE + '/api/quality/issues?limit=5000', { cache:'no-store', credentials:'omit' });
+      if(!res.ok) throw new Error('quality HTTP '+res.status);
+      const data = await res.json();
+      TSL_STATE.qualityRows = Array.isArray(data.rows) ? data.rows : [];
+      TSL_STATE.lastSync = new Date().toISOString();
+      renderQualityFromServer(reason || 'load');
+    }catch(e){ tslWarn('quality server load failed', e && e.message ? e.message : e); }
+  }
+  async function uploadQualityToServer(file){
+    if(!file) return;
+    const fd = new FormData();
+    fd.append('file', file, file.name || 'quality.xlsx');
+    fd.append('uploaded_by', 'user-portal-quality');
+    try{
+      const res = await fetch(TSL_API_BASE + '/api/public/upload/quality', { method:'POST', body:fd, credentials:'omit', cache:'no-store' });
+      if(!res.ok){ const t=await res.text(); throw new Error('HTTP '+res.status+' '+t.slice(0,240)); }
+      const data = await res.json();
+      if(typeof showToast === 'function') showToast('품질/불량 서버 저장 완료 — '+(data.insertedCount||data.rowCount||'')+'행', 'ok');
+      await loadQualityFromServer('after-quality-upload');
+    }catch(e){
+      if(typeof showErr === 'function') showErr('품질/불량 서버 저장 실패: '+(e && e.message ? e.message : e));
+      tslWarn('quality upload failed', e);
+    }
+  }
+  const _origQUpload = typeof handleQDefectUpload === 'function' ? handleQDefectUpload : null;
+  if(_origQUpload){
+    handleQDefectUpload = function(file){
+      const ret = _origQUpload.apply(this, arguments);
+      if(file) setTimeout(()=>uploadQualityToServer(file), 900);
+      return ret;
+    };
+    window.handleQDefectUpload = handleQDefectUpload;
+  }
+  window.TSL_loadQualityFromServer = loadQualityFromServer;
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', ()=>setTimeout(()=>loadQualityFromServer('boot'), 900));
+  else setTimeout(()=>loadQualityFromServer('boot'), 900);
+  window.addEventListener('focus', ()=>setTimeout(()=>loadQualityFromServer('focus'), 300));
+  document.addEventListener('visibilitychange', ()=>{ if(!document.hidden) setTimeout(()=>loadQualityFromServer('visible'), 300); });
+})();
